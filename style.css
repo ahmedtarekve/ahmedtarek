@@ -1078,3 +1078,69 @@ input[type="number"] {
     0% { opacity: 0; transform: scale(0.9); }
     100% { opacity: 1; transform: scale(1); }
 }
+/* ---- ستايل قسم آراء العملاء ---- */
+.review-card {
+    flex: 0 0 calc(33.333% - 15px); /* بيعرض 3 كروت جنب بعض ع البي سي */
+    min-width: 320px;
+    padding: 25px;
+    border-radius: 15px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.03); /* لون شفاف خفيف */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px); /* الكارت بيترفع لفوق سنة لما تقف عليه */
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.reviewer-avatar {
+    font-size: 3rem;
+    color: #555; /* لون أيقونة الشخص */
+}
+
+/* لو حبيت تحط صورة حقيقية للعميل بدل الأيقونة في المستقبل */
+.reviewer-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.reviewer-details h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.stars {
+    color: #f59e0b; /* لون النجوم الذهبي */
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.review-text {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    font-style: italic; /* بيخلي الخط مايل سنة عشان يبان إنه اقتباس */
+}
+
+/* تظبيط الموبايل */
+@media (max-width: 768px) {
+    .review-card {
+        flex: 0 0 85%; /* الكارت بياخد 85% من الشاشة عشان يبان إن فيه كروت تانية جنبه */
+        min-width: 280px;
+    }
+}
