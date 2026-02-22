@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب خدمة | أحمد طارق</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="order-page">
+
+    <a href="index.html" class="back-home glass">
+        <i class="fas fa-chevron-right"></i> العودة للرئيسية
+    </a>
+
+    <section class="order-container">
+        
+        <div class="form-wrapper glass glow-border" id="mainFormContainer">
+            <h2 class="gradient-text" style="text-align: center;">بدء مشروع جديد</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: var(--text-muted);">املأ البيانات دي وهرد عليك بخطة عمل تناسب قناتك وأهدافك.</p>
+
+            <form id="projectForm">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>الاسم / اسم القناة</label>
+                        <input type="text" name="name" placeholder="الاسم" required>
+                    </div>
+                    <div class="input-group">
+                        <label>البريد الإلكتروني</label>
+                        <input type="email" name="email" placeholder="example@mail.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label>الميزانية المتاحة ($)</label>
+                        <input type="number" name="budget" placeholder="مثلاً 500$ (بالدولار)">
+                    </div>
+                </div>
+
+                <div class="input-group full-width" style="margin-bottom: 20px; margin-top: 10px;">
+                    <label>نوع الخدمة المطلوبة (تقدر تختار أكتر من حاجة)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="service" value="مونتاج فيديو">
+                            <span>مونتاج فيديو</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="service" value="كتابة سكريبت">
+                            <span>كتابة سكريبت</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="service" value="تصميم صور مصغرة">
+                            <span>تصميم صور مصغرة</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="service" value="باقة كاملة">
+                            <span>باقة كاملة (Video + Script + Thumbnail)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-group full-width">
+                    <label>وصف المشروع</label>
+                    <textarea name="description" rows="4" placeholder="ايه هدف الفيديو؟ وايه الـ Style اللي بتحبه؟" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary submit-btn" id="submitBtn" style="margin-top: 20px;">
+                    <i class="fas fa-paper-plane"></i> إرسال الطلب
+                </button>
+            </form>
+        </div>
+
+        <div class="form-wrapper glass glow-border" id="successContainer" style="display: none; text-align: center; padding: 60px 20px;">
+            <i class="fas fa-check-circle" style="font-size: 5rem; color: #22c55e; margin-bottom: 25px;"></i>
+            <h2 style="color: white; margin-bottom: 15px; font-size: 2.2rem;">تم إرسال طلبك بنجاح! 🎉</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto;">
+                استلمت تفاصيل مشروعك. راجع إيميلك دلوقتي هتلاقي رسالة مني، وهتواصل معاك في أقرب وقت عشان نبدأ شغل.
+            </p>
+            <a href="index.html" class="btn-primary" style="margin-top: 35px; display: inline-flex; justify-content: center;">
+                <i class="fas fa-home"></i> العودة للرئيسية
+            </a>
+        </div>
+
+    </section>
+
+    <script>
+        // رابط الاسكريبت بتاعك
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbx2_F4jVwOzwl-ggziwSie9sD-u-7YQHk-IyTboadbu-g9JZ4jpEYY29N5DeKFfFeTU/exec';
+        
+        const form = document.getElementById('projectForm');
+        const btn = document.getElementById('submitBtn');
+        const mainFormContainer = document.getElementById('mainFormContainer');
+        const successContainer = document.getElementById('successContainer');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            // تغيير شكل الزرار وقت التحميل
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+            
+            // تجميع الخدمات المختارة في نص واحد
+            const services = formData.getAll('service');
+            const selectedServices = services.length > 0 ? services.join(' + ') : 'لم يتم التحديد';
+            formData.delete('service');
+            formData.append('service', selectedServices);
+
+            // إرسال البيانات لجوجل
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: new URLSearchParams(formData),
+                mode: 'no-cors' 
+            })
+            .then(() => {
+                // إخفاء الفورم وإظهار رسالة النجاح
+                mainFormContainer.style.display = 'none';
+                successContainer.style.display = 'block';
+            })
+            .catch(error => {
+                alert('حصلت مشكلة في الاتصال، حاول مرة تانية!');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الطلب';
+            });
+        });
+    </script>
+</body>
+</html>
