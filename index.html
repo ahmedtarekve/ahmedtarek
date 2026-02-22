@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أحمد طارق | مونتير فيديو وصانع محتوى</title>
-    
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -102,51 +102,79 @@
         </div>
 
             <div class="portfolio-category">
-            <h3 class="category-title"><i class="fas fa-video"></i> مونتاج الفيديو</h3>
-            
-            <div class="video-slider-wrapper">
-                <button class="slider-btn right-btn" onclick="scrollVideos(1)"><i class="fas fa-chevron-right"></i></button>
-
-                <div class="video-row" id="videoRow">
-                    
-                    <div class="video-item glass">
-                        <iframe src="https://www.youtube.com/embed/e8XCS6M8CbE?si=yrr-Pry0TX88jciG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-
-                    <div class="video-item glass">
-                        <iframe src="https://www.youtube.com/embed/rdS9wcpmSPU?si=WqJ4uK2-UwGGowCJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-
-                    <div class="video-item glass">
-                        <iframe src="https://www.youtube.com/embed/EY65ACB3CWE?si=kdd31K3jGKfkcVXW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-
-                                        <div class="video-item glass">
-                        <iframe src="https://www.youtube.com/embed/QBW9tl2J41g?si=p2ykzFqFoGaVzKbR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-
-                                        <div class="video-item glass">
-                        <iframe src="https://www.youtube.com/embed/LWay_4bqpgA?si=3Pg_X42NZAhQOJLf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-
-                                        <div class="video-item glass">
-                        <iframe src="https://www.youtube.com/embed/8cEb-8OLMLg?si=SoyhvrbpKHzFTOkf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-
-                                        <div class="video-item glass">
-                        <iframe src="https://www.youtube.com/embed/lqyx5sT0bSA?si=maAk69Zu7jnHtmiT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-
-                                        <div class="video-item glass">
-                        <iframe src="https://www.youtube.com/embed/B4MhKysYNoM?si=bIcAyA7T4yLhFQDk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-
-                    </div>
-
-                <button class="slider-btn left-btn" onclick="scrollVideos(-1)"><i class="fas fa-chevron-left"></i></button>
-            </div>
+    <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+        <h3 class="category-title"><i class="fas fa-video"></i> معرض الفيديوهات</h3>
+        
+        <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="youtube">يوتيوب</button>
+            <button class="filter-btn" data-filter="shorts">شورتس وريلز</button>
+            <button class="filter-btn" data-filter="education">تعليمي</button>
+            <button class="filter-btn" data-filter="podcast">بودكاست</button>
+            <button class="filter-btn" data-filter="ads">إعلانات</button>
+            <button class="filter-btn" data-filter="graduation">مشاريع تخرج</button>
         </div>
-        </div> <div class="portfolio-category">
+    </div>
+
+    <div class="slider-wrapper">
+        <button class="slider-btn right-btn" onclick="scrollContainer('videoGallery', 1)"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="video-gallery" id="videoGallery">
+            
+            <div class="video-item glass filter-item" data-category="youtube">
+                <iframe src="https://www.youtube.com/embed/e8XCS6M8CbE?si=z50kP2kMcLmLRp2G" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item glass filter-item" data-category="youtube">
+                <iframe src="https://www.youtube.com/embed/rdS9wcpmSPU?si=HC34o8L_sT-VxXAJ" frameborder="0" allowfullscreen></iframe>
+            </div>
+             <div class="video-item glass filter-item" data-category="youtube">
+                <iframe src="https://www.youtube.com/embed/EY65ACB3CWE?si=2SHI0L09MOgzaH49" frameborder="0" allowfullscreen></iframe>
+            </div>
+             <div class="video-item glass filter-item" data-category="youtube">
+                <iframe src="https://www.youtube.com/embed/Bvn5qvMHdbA?si=Zu-1ddit13ZCn9ba" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+
+
+            <div class="video-item glass filter-item" data-category="education">
+                <iframe src="https://www.youtube.com/embed/rdS9wcpmSPU" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-item glass filter-item shorts-video" data-category="shorts">
+                <iframe src="https://www.youtube.com/embed/iXYnFHocgOY?si=VaLCbUao-UHhuyAo" frameborder="0" allowfullscreen></iframe>
+            </div>
+                        <div class="video-item glass filter-item shorts-video" data-category="shorts">
+                <iframe src="https://www.youtube.com/embed/-u266TAxU04?si=W8kE7M8Ml11pTpIg" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item glass filter-item shorts-video" data-category="shorts">
+                <iframe src="https://www.youtube.com/embed/_Q_cUX80hT8?si=GLf3gc_giZSjmia3" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item glass filter-item shorts-video" data-category="shorts">
+                <iframe src="https://www.youtube.com/embed/N4OvQz-OG20?si=DSiNbjcRu8OJtdnx" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item glass filter-item shorts-video" data-category="shorts">
+                <iframe src="https://www.youtube.com/embed/3L4qKn1V9yw?si=icMGxjMsP_Jw5Npp" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            
+                        <div class="video-item glass filter-item" data-category="podcast">
+                <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fweb.facebook.com%2F100004178612344%2Fvideos%2F1647793805973670%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+            </div>
+
+            <div class="video-item glass filter-item" data-category="ads">
+                <iframe src="https://drive.google.com/file/d/1diz-gIW1DpychCZ5rDRfmszuDH55XnOn/preview" width="640" height="480" allow="autoplay" frameborder="0" allowfullscreen></iframe>
+
+            <div class="video-item glass filter-item" data-category="graduation">
+                <iframe src="https://www.youtube.com/embed/rdS9wcpmSPU" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+
+            
+        </div>
+
+        <button class="slider-btn left-btn" onclick="scrollContainer('videoGallery', -1)"><i class="fas fa-chevron-left"></i></button>
+    </div>
+</div>
     <h3 class="category-title"><i class="fas fa-image"></i> تصاميم الـ Thumbnails</h3>
     
     <div class="slider-wrapper">
@@ -215,15 +243,28 @@
     <footer>
         </footer>
 <script>
-// دالة تحريك أي حاوية (سواء فيديوهات أو صور)
-    function scrollContainer(rowId, direction) {
-        const row = document.getElementById(rowId);
-        const scrollAmount = row.clientWidth * 0.8; // بيحرك الشاشة بنسبة 80% من عرضها
-        
-        row.scrollBy({ 
-            left: direction * scrollAmount, 
-            behavior: 'smooth' 
+    // برمجة زراير الفلترة
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filterItems = document.querySelectorAll('.filter-item');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // 1. نشيل كلاس active من كل الزراير ونحطه للزرار اللي انداس عليه بس
+            filterBtns.forEach(button => button.classList.remove('active'));
+            btn.classList.add('active');
+
+            // 2. نجيب اسم القسم اللي العميل اختاره
+            const filterValue = btn.getAttribute('data-filter');
+
+            // 3. نفلتر الفيديوهات
+            filterItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.classList.remove('hide');
+                } else {
+                    item.classList.add('hide');
+                }
+            });
         });
-    }</script>
-</body>
+    });
+</script></body>
 </html>
