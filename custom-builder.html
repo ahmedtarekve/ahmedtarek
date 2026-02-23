@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فصّل باقتك | أحمد طارق</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
+
+    <div class="custom-builder-box glass" style="width: 100%; max-width: 600px; padding: 40px; border-radius: 20px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2 style="color: #f59e0b;"><i class="fas fa-sliders-h"></i> فصّل باقتك على مزاجك</h2>
+            <p style="color: #aaa;">زود ونقص الخدمات براحتك، وهنحسبلك أفضل سعر فوراً</p>
+        </div>
+
+        <div class="services-list">
+            <div class="service-row" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #333;">
+                <div style="color: #fff;"><h4><i class="fas fa-video"></i> مونتاج فيديو طويل</h4><p style="color:#888; font-size: 0.85rem; margin:0;">حتى 10 دقائق</p></div>
+                <div class="counter-box" style="display: flex; background: #1a1a1a; border-radius: 8px; border: 1px solid #444;">
+                    <button onclick="updateCount('montage', -1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="count-montage" value="0" readonly style="width: 40px; text-align: center; background: transparent; border: none; color: #fff; font-weight: bold;">
+                    <button onclick="updateCount('montage', 1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="service-row" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #333;">
+                <div style="color: #fff;"><h4><i class="fas fa-mobile-alt"></i> شورتس / ريلز</h4></div>
+                <div class="counter-box" style="display: flex; background: #1a1a1a; border-radius: 8px; border: 1px solid #444;">
+                    <button onclick="updateCount('shorts', -1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="count-shorts" value="0" readonly style="width: 40px; text-align: center; background: transparent; border: none; color: #fff; font-weight: bold;">
+                    <button onclick="updateCount('shorts', 1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="service-row" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #333;">
+                <div style="color: #fff;"><h4><i class="fas fa-image"></i> صور مصغرة</h4></div>
+                <div class="counter-box" style="display: flex; background: #1a1a1a; border-radius: 8px; border: 1px solid #444;">
+                    <button onclick="updateCount('thumb', -1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="count-thumb" value="0" readonly style="width: 40px; text-align: center; background: transparent; border: none; color: #fff; font-weight: bold;">
+                    <button onclick="updateCount('thumb', 1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="service-row" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+                <div style="color: #fff;"><h4><i class="fas fa-pen-nib"></i> كتابة سكريبت</h4></div>
+                <div class="counter-box" style="display: flex; background: #1a1a1a; border-radius: 8px; border: 1px solid #444;">
+                    <button onclick="updateCount('script', -1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="count-script" value="0" readonly style="width: 40px; text-align: center; background: transparent; border: none; color: #fff; font-weight: bold;">
+                    <button onclick="updateCount('script', 1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; border-top: 1px dashed #f59e0b; margin-top: 20px; padding-top: 20px; min-height: 120px;">
+            <div id="calc-loader" style="display: none; color: #f59e0b; font-size: 1.2rem;">
+                <i class="fas fa-calculator fa-spin"></i> جاري الحساب...
+            </div>
+            
+            <div id="calc-result" style="display: none;">
+                <h4 style="color: #aaa; margin-bottom: 5px;">التكلفة الإجمالية:</h4>
+                <h2 id="custom-total-price" style="color: #10b981; font-size: 2.5rem; margin: 0;">$0</h2>
+                
+                <button onclick="checkoutCustomPackage()" class="submit-btn" style="margin-top: 15px; width: 100%; font-size: 1.1rem;">
+                    تأكيد الباقة والطلب <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 15px;">
+            <a href="index.html" style="color: #aaa; text-decoration: none;"><i class="fas fa-home"></i> العودة للرئيسية</a>
+        </div>
+    </div>
+
+    <script>
+        const customPrices = { montage: 50, shorts: 10, thumb: 10, script: 15 };
+        let localCurrency = "USD";
+        let conversionRate = 1;
+        let typingTimer;
+
+        // جلب عُملة العميل أول ما الصفحة تفتح
+        window.addEventListener('load', async () => {
+            try {
+                const ipRes = await fetch('https://ipapi.co/json/');
+                const ipData = await ipRes.json();
+                localCurrency = ipData.currency;
+                
+                if (localCurrency !== 'USD') {
+                    const ratesRes = await fetch('https://open.er-api.com/v6/latest/USD');
+                    const ratesData = await ratesRes.json();
+                    conversionRate = ratesData.rates[localCurrency] || 1;
+                }
+            } catch (e) { console.log("Currency fetch failed."); }
+        });
+
+        function updateCount(service, change) {
+            const input = document.getElementById(`count-${service}`);
+            let currentVal = parseInt(input.value) + change;
+            if (currentVal < 0) currentVal = 0;
+            input.value = currentVal;
+
+            document.getElementById('calc-result').style.display = 'none';
+            document.getElementById('calc-loader').style.display = 'block';
+
+            clearTimeout(typingTimer);
+            typingTimer = setTimeout(calculateCustomPackage, 800);
+        }
+
+        function calculateCustomPackage() {
+            const counts = {
+                montage: parseInt(document.getElementById('count-montage').value),
+                shorts: parseInt(document.getElementById('count-shorts').value),
+                thumb: parseInt(document.getElementById('count-thumb').value),
+                script: parseInt(document.getElementById('count-script').value)
+            };
+
+            let totalUSD = (counts.montage * customPrices.montage) + (counts.shorts * customPrices.shorts) + (counts.thumb * customPrices.thumb) + (counts.script * customPrices.script);
+
+            const loader = document.getElementById('calc-loader');
+            const resultArea = document.getElementById('calc-result');
+
+            if (totalUSD > 0) {
+                loader.style.display = 'none';
+                resultArea.style.display = 'block';
+                
+                // تحويل السعر لعملة العميل
+                let finalPriceText = totalUSD + " USD";
+                if (localCurrency !== "USD" && conversionRate !== 1) {
+                    let localTotal = Math.round(totalUSD * conversionRate);
+                    finalPriceText = localTotal.toLocaleString() + " " + localCurrency;
+                }
+
+                const priceDisplay = document.getElementById('custom-total-price');
+                priceDisplay.innerText = finalPriceText;
+                priceDisplay.style.transform = "scale(1.1)";
+                setTimeout(() => priceDisplay.style.transform = "scale(1)", 200);
+
+                let detailsString = "باقة مخصصة: ";
+                if(counts.montage > 0) detailsString += `${counts.montage}x مونتاج، `;
+                if(counts.shorts > 0) detailsString += `${counts.shorts}x شورتس، `;
+                if(counts.thumb > 0) detailsString += `${counts.thumb}x صور مصغرة، `;
+                if(counts.script > 0) detailsString += `${counts.script}x سكريبت`;
+                detailsString = detailsString.replace(/، $/, "");
+
+                localStorage.setItem('selectedPackage', detailsString);
+                localStorage.setItem('packagePrice', finalPriceText);
+            } else {
+                loader.style.display = 'none';
+                resultArea.style.display = 'none';
+            }
+        }
+
+        function checkoutCustomPackage() {
+            // هنبعته على طول لصفحة package.html اللي بتستقبل الطلبات السريعة
+            window.location.href = 'package.html';
+        }
+    </script>
+</body>
+</html>
