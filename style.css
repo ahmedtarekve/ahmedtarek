@@ -1269,3 +1269,78 @@ input[type="number"] {
         transform: translateY(-5px);
     }
 }
+
+/* ---- ستايل مفصل الباقات ---- */
+.custom-builder-box {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.service-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.service-row:last-child {
+    border-bottom: none;
+}
+
+.service-info h4 {
+    margin: 0 0 5px 0;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.service-info p {
+    margin: 0;
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.counter-box {
+    display: flex;
+    align-items: center;
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #444;
+}
+
+.counter-box button {
+    background: #2a2a2a;
+    color: #f59e0b;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.counter-box button:hover {
+    background: #333;
+}
+
+.counter-box input {
+    width: 40px;
+    text-align: center;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    pointer-events: none; /* عشان العميل ميكتبش رقم بإيده ويلخبط الكود */
+}
+
+.calculation-area {
+    text-align: center;
+    border-top: 1px dashed rgba(245, 158, 11, 0.5);
+    margin-top: 20px;
+    padding-top: 20px;
+    min-height: 120px; /* عشان الموقع مايفضلش ينط لفوق وتحت مع التحميل */
+}
