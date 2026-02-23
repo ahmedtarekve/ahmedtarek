@@ -18,6 +18,8 @@
             <li><a href="#about">من أنا</a></li>
             <li><a href="#services">خدماتي</a></li>
             <li><a href="#portfolio">أعمالي</a></li>
+            <li><a href="#packages">الباقات</a></li>
+            <li><a href="#testimonials">آراء العملاء</a></li>
         </ul>
         <a href="order.html" class="btn-primary nav-btn">احصل على عرض</a>
     </nav>
@@ -220,8 +222,7 @@
             </div>
         </div>
     </section>
-<div class="portfolio-category testimonials-section" style="margin-top: 50px;">
-    <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+<div id="testimonials" class="portfolio-category testimonials-section" style="margin-top: 50px;">    <div class="section-header" style="text-align: center; margin-bottom: 30px;">
         <h3 class="category-title"><i class="fas fa-star" style="color: #f59e0b;"></i> آراء شركاء النجاح</h3>
         <p style="color: #aaa; margin-top: 10px;">تقييمات حقيقية من عملائي</p>
     </div>
@@ -313,6 +314,58 @@
         <button class="slider-btn left-btn" onclick="scrollContainer('reviewsRow', -1)"><i class="fas fa-chevron-left"></i></button>
     </div>
 </div>
+
+<div id="packages" class="portfolio-category pricing-section" style="margin-top: 60px;">
+        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+        <h3 class="category-title"><i class="fas fa-tags" style="color: #f59e0b;"></i> باقات صناع المحتوى</h3>
+        <p style="color: #aaa; margin-top: 10px;">وفر فلوسك واختار الباقة اللي تناسب خطتك الشهرية</p>
+    </div>
+
+    <div class="pricing-grid">
+        <div class="pricing-card glass">
+            <h3>باقة البداية</h3>
+            <p class="package-desc">فيديو واحد متكامل</p>
+            <div class="price dynamic-price" data-price-usd="65">65 USD</div>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> فكرة فيديو تريندي لمحتواك</li>
+                <li><i class="fas fa-check"></i> سكريبت كامل (> 8 دقائق)</li>
+                <li><i class="fas fa-check"></i> مونتاج احترافي متكامل</li>
+                <li><i class="fas fa-check"></i> صورة مصغرة جذابة (Thumbnail)</li>
+            </ul>
+            <a href="javascript:void(0)" onclick="buyPackage('باقة البداية', this)" class="order-btn">اطلب الباقة</a>
+        </div>
+
+        <div class="pricing-card glass premium-card">
+            <div class="popular-badge">الأكثر طلباً 🔥</div>
+            <h3>باقة البريميوم</h3>
+            <p class="package-desc">8 فيديوهات (4 طويلة + 4 شورتس)</p>
+            <div class="price dynamic-price" data-price-usd="350">350 USD</div>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> 4 فيديوهات طويلة + 4 شورتس</li>
+                <li><i class="fas fa-check"></i> سكريبتات وأفكار تريندي للكل</li>
+                <li><i class="fas fa-check"></i> مونتاج كامل احترافي</li>
+                <li><i class="fas fa-check"></i> 12 صورة مصغرة (للـ A/B Testing)</li>
+                <li><i class="fas fa-check"></i> 3 اقتراحات عناوين لكل فيديو</li>
+            </ul>
+            <a href="javascript:void(0)" onclick="buyPackage('باقة البريميوم (8 فيديوهات)', this)" class="order-btn premium-btn">اطلب الباقة البريميوم</a>
+        </div>
+
+        <div class="pricing-card glass">
+            <h3>باقة الانطلاق</h3>
+            <p class="package-desc">4 فيديوهات طويلة</p>
+            <div class="price dynamic-price" data-price-usd="320">320 USD</div>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> 4 فيديوهات طويلة</li>
+                <li><i class="fas fa-check"></i> سكريبتات كاملة وأفكار</li>
+                <li><i class="fas fa-check"></i> مونتاج احترافي لكل الفيديوهات</li>
+                <li><i class="fas fa-check"></i> 12 صورة مصغرة (للـ A/B Testing)</li>
+                <li><i class="fas fa-check"></i> 3 اقتراحات عناوين لكل فيديو</li>
+            </ul>
+            <a href="javascript:void(0)" onclick="buyPackage('باقة الانطلاق (4 فيديوهات)', this)" class="order-btn">اطلب الباقة</a>
+        </div>
+    </div>
+</div>
+
     <section class="final-cta section-pad">
         <div class="cta-bg-pattern"></div>
         <div class="cta-box glass glow-border-orange">
@@ -358,5 +411,60 @@
             });
         });
     });
-</script></body>
+
+    // دالة تحويل العملات اللحظية
+    async function convertPricesToLocal() {
+        try {
+            // 1. معرفة عملة العميل من خلال الـ IP
+            const ipResponse = await fetch('https://ipapi.co/json/');
+            const ipData = await ipResponse.json();
+            const userCurrency = ipData.currency; // مثال: EGP, SAR, AED
+
+            // لو العميل في دولة بتتعامل بالدولار، مش هنعمل حاجة
+            if (userCurrency === 'USD') return;
+
+            // 2. جلب أسعار الصرف مقابل الدولار
+            const ratesResponse = await fetch('https://open.er-api.com/v6/latest/USD');
+            const ratesData = await ratesResponse.json();
+            const conversionRate = ratesData.rates[userCurrency];
+
+            if (conversionRate) {
+                // 3. تحديث الأرقام في الموقع
+                const priceElements = document.querySelectorAll('.dynamic-price');
+                priceElements.forEach(el => {
+                    const usdPrice = parseFloat(el.getAttribute('data-price-usd'));
+                    const localPrice = Math.round(usdPrice * conversionRate);
+                    
+                    // تحويل الرقم لشكل شيك (مثال: 1,500 EGP)
+                    el.innerText = localPrice.toLocaleString() + ' ' + userCurrency;
+                });
+            }
+        } catch (error) {
+            console.log("تعذر جلب أسعار العملات، سيتم عرض الأسعار بالدولار كاحتياطي.", error);
+        }
+    }
+
+    // تشغيل الكود بمجرد ما الصفحة تحمل
+    window.addEventListener('load', convertPricesToLocal);
+
+    function buyPackage(pkgName, btnElement) {
+        // سحب الكارت اللي العميل داس عليه
+        const card = btnElement.closest('.pricing-card');
+        // سحب السعر المعروض (سواء بالدولار أو بالعملة المحلية)
+        const priceText = card.querySelector('.dynamic-price').innerText;
+        
+        // حفظ البيانات في المتصفح
+        localStorage.setItem('selectedPackage', pkgName);
+        localStorage.setItem('packagePrice', priceText);
+        
+        // التوجيه لصفحة طلب الباقات السريعة
+        window.location.href = 'package.html';
+    }
+</script>
+
+<a href="https://wa.me/201125890190" class="float-whatsapp" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+</body>
 </html>
