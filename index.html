@@ -323,6 +323,17 @@
     </div>
 
     <div class="pricing-grid">
+        <div class="pricing-card glass" style="border: 2px dashed #f59e0b; background: rgba(245, 158, 11, 0.05);">
+            <h3>فصّل باقتك <i class="fas fa-sliders-h"></i></h3>
+            <p class="package-desc">اختار الخدمات اللي محتاجها على مزاجك</p>
+            <div class="price" style="font-size: 1.5rem; color: #fff; margin-bottom: 25px;">سعر مخصص 🧮</div>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> تحكم كامل في ميزانيتك</li>
+                <li><i class="fas fa-check"></i> اختار العدد اللي يناسبك</li>
+                <li><i class="fas fa-check"></i> حساب فوري للتكلفة بعُملتك</li>
+            </ul>
+            <a href="custom-builder.html" class="order-btn" style="background: #f59e0b; color: #fff;">ابدأ التفصيل الآن</a>
+        </div>
         <div class="pricing-card glass">
             <h3>باقة البداية</h3>
             <p class="package-desc">فيديو واحد متكامل</p>
@@ -366,7 +377,6 @@
         </div>
     </div>
 </div>
-
     <section class="final-cta section-pad">
         <div class="cta-bg-pattern"></div>
         <div class="cta-box glass glow-border-orange">
@@ -460,6 +470,86 @@
         
         // التوجيه لصفحة طلب الباقات السريعة
         window.location.href = 'package.html';
+    }
+
+    // الأسعار الخفية (العميل مش بيشوفها هنا)
+    const customPrices = {
+        montage: 50,  // متوسط فيديو 10 دقايق
+        shorts: 10,
+        thumb: 10,
+        script: 15
+    };
+
+    let typingTimer;
+
+    function updateCount(service, change) {
+        const input = document.getElementById(`count-${service}`);
+        let currentVal = parseInt(input.value) + change;
+        
+        if (currentVal < 0) currentVal = 0; // مفيش بالسالب
+        input.value = currentVal;
+
+        // إظهار أنيميشن التحميل
+        document.getElementById('calc-result').style.display = 'none';
+        document.getElementById('calc-loader').style.display = 'block';
+
+        // مسح أي توقيت قديم لو العميل داس بسرعة
+        clearTimeout(typingTimer);
+        
+        // استنى ثانية كأنه بيحسب، وبعدين طلع النتيجة
+        typingTimer = setTimeout(calculateCustomPackage, 1000);
+    }
+
+    function calculateCustomPackage() {
+        const counts = {
+            montage: parseInt(document.getElementById('count-montage').value),
+            shorts: parseInt(document.getElementById('count-shorts').value),
+            thumb: parseInt(document.getElementById('count-thumb').value),
+            script: parseInt(document.getElementById('count-script').value)
+        };
+
+        let totalUSD = (counts.montage * customPrices.montage) +
+                       (counts.shorts * customPrices.shorts) +
+                       (counts.thumb * customPrices.thumb) +
+                       (counts.script * customPrices.script);
+
+        const loader = document.getElementById('calc-loader');
+        const resultArea = document.getElementById('calc-result');
+
+        if (totalUSD > 0) {
+            loader.style.display = 'none';
+            resultArea.style.display = 'block';
+            
+            // تحديث السعر النهائي
+            const priceDisplay = document.getElementById('custom-total-price');
+            priceDisplay.innerText = totalUSD + " USD";
+            
+            // إضافة تأثير حركي خفيف للرقم
+            priceDisplay.style.transform = "scale(1.2)";
+            setTimeout(() => priceDisplay.style.transform = "scale(1)", 200);
+
+            // حفظ البيانات في المتصفح عشان نبعتها لصفحة الفورم
+            let detailsString = "باقة مخصصة: ";
+            if(counts.montage > 0) detailsString += `${counts.montage}x مونتاج، `;
+            if(counts.shorts > 0) detailsString += `${counts.shorts}x شورتس، `;
+            if(counts.thumb > 0) detailsString += `${counts.thumb}x صور مصغرة، `;
+            if(counts.script > 0) detailsString += `${counts.script}x سكريبت`;
+            
+            // بنشيل آخر فاصلة
+            detailsString = detailsString.replace(/، $/, "");
+
+            localStorage.setItem('customPkgDetails', detailsString);
+            localStorage.setItem('customPkgPrice', totalUSD + " USD");
+        } else {
+            // لو العميل رجع العدادات لصفر
+            loader.style.display = 'none';
+            resultArea.style.display = 'none';
+        }
+    }
+
+    function checkoutCustomPackage() {
+        // تحويل العميل لصفحة الطلب الجديدة
+        window.location.href = 'custom-order.html';
     }
 </script>
 
