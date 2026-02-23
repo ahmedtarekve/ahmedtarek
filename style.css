@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 /* ---- الإعدادات الأساسية ---- */
 * {
     margin: 0;
@@ -1142,5 +1145,164 @@ input[type="number"] {
     .review-card {
         flex: 0 0 85%; /* الكارت بياخد 85% من الشاشة عشان يبان إن فيه كروت تانية جنبه */
         min-width: 280px;
+    }
+}
+
+/* ---- ستايل زرار الواتساب العائم ---- */
+.float-whatsapp {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px; /* لو عايزه يظهر على الشمال خليها left: 40px */
+    background-color: #25d366; /* لون واتساب الرسمي */
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
+    box-shadow: 0px 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 1000; /* عشان يفضل فوق أي حاجة تانية في الموقع */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.float-whatsapp:hover {
+    background-color: #128C7E;
+    transform: scale(1.1); /* بيكبر سنة صغيرة لما تقف عليه */
+    color: white;
+}
+
+/* تظبيط مقاس الزرار على الموبايل */
+@media (max-width: 768px) {
+    .float-whatsapp {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 30px;
+    }
+}
+
+/* ---- ستايل قسم الباقات ---- */
+.pricing-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.pricing-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+}
+
+.premium-card {
+    background: linear-gradient(145deg, rgba(245, 158, 11, 0.1), rgba(0, 0, 0, 0.5));
+    border: 1px solid #f59e0b;
+    transform: scale(1.05); /* بنكبرها سنة عشان تبان إنها مميزة */
+}
+
+.premium-card:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f59e0b;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+}
+
+.pricing-card h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.package-desc {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin: 10px 0 20px;
+}
+
+.price {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #10b981; /* لون أخضر للفلوس */
+    margin-bottom: 25px;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+    text-align: right;
+}
+
+.features-list li {
+    color: #ddd;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.features-list i {
+    color: #f59e0b;
+    margin-left: 8px;
+}
+
+.order-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #f59e0b;
+    color: #f59e0b;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.order-btn:hover {
+    background: #f59e0b;
+    color: #fff;
+}
+
+.premium-btn {
+    background: #f59e0b;
+    color: #fff;
+}
+
+.premium-btn:hover {
+    background: #d97706;
+}
+
+@media (max-width: 768px) {
+    .premium-card {
+        transform: scale(1); /* بنرجعها لحجمها الطبيعي ع الموبايل عشان الشاشة */
+    }
+    .premium-card:hover {
+        transform: translateY(-5px);
     }
 }
