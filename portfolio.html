@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الأعمال الشامل | أحمد طارق</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="projects.js"></script> 
+</head>
+<body style="padding: 40px 20px;">
+
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 20px;">
+            <div>
+                <h2 style="color: #f59e0b; margin: 0;"><i class="fas fa-folder-open"></i> معرض الأعمال كامل</h2>
+                <p id="category-title" style="color: #aaa; margin: 5px 0 0;">...</p>
+            </div>
+            <a href="index.html#portfolio" style="background: #333; color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none;"><i class="fas fa-arrow-right"></i> عودة للرئيسية</a>
+        </div>
+
+        <div class="portfolio-grid" id="full-grid">
+            </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const category = localStorage.getItem('portfolioCategory') || 'all';
+            
+            // ترجمة اسم القسم عشان نكتبه فوق
+            const catNames = {
+                'all': 'جميع الأعمال', 'youtube': 'فيديوهات يوتيوب', 'shorts': 'شورتس وريلز',
+                'education': 'كورسات تعليمية', 'ads': 'إعلانات وبروموهات', 'podcast': 'بودكاست', 'graduation': 'مشاريع تخرج'
+            };
+            document.getElementById('category-title').innerText = "قسم: " + catNames[category];
+
+            // فلترة ورص الفيديوهات كلها
+            const grid = document.getElementById('full-grid');
+            const filtered = allProjects.filter(p => category === 'all' || p.categories.includes(category));
+            
+            filtered.forEach(project => {
+                grid.innerHTML += `<div class="portfolio-item ${project.type}">${project.content}</div>`;
+            });
+        };
+    </script>
+</body>
+</html>
