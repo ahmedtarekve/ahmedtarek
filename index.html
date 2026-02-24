@@ -19,8 +19,8 @@
             <li><a href="#about">من أنا</a></li>
             <li><a href="#services">خدماتي</a></li>
             <li><a href="#portfolio">أعمالي</a></li>
-            <li><a href="#testimonials">آراء العملاء</a></li>
             <li><a href="#packages">الباقات</a></li>
+            <li><a href="#testimonials">آراء العملاء</a></li>
         </ul>
         <a href="order.html" class="btn-primary nav-btn">احصل على عرض</a>
     </nav>
@@ -103,30 +103,82 @@
             <span class="section-subtitle">معرض أعمالي</span>
             <h2 class="section-title">شغل بيتكلم <span class="gradient-text">عن نفسه</span></h2>
         </div>
-<div id="portfolio" class="portfolio-section" style="margin-top: 60px; padding: 20px;">
-    <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-        <h3 class="category-title"><i class="fas fa-play-circle" style="color: #f59e0b;"></i> معرض الأعمال</h3>
-        <p style="color: #aaa; margin-top: 10px;">اختر التصنيف لمشاهدة سابقة أعمالي</p>
-    </div>
 
-   <div class="filter-buttons">
-        <button class="filter-btn active" onclick="loadSlider('all', this)">الكل</button>
-        <button class="filter-btn" onclick="loadSlider('youtube', this)">يوتيوب</button>
-        <button class="filter-btn" onclick="loadSlider('shorts', this)">شورتس / ريلز</button>
-        <button class="filter-btn" onclick="loadSlider('education', this)">كورسات تعليمية</button>
-        <button class="filter-btn" onclick="loadSlider('ads', this)">إعلانات وبروموهات</button>
-        <button class="filter-btn" onclick="loadSlider('podcast', this)">بودكاست</button>
-        <button class="filter-btn" onclick="loadSlider('graduation', this)">مشاريع تخرج</button>
-    </div>
-
-<div class="carousel-wrapper">
-        <button class="slide-arrow right-arrow" onclick="slideTrack(-1)"><i class="fas fa-chevron-right"></i></button>
+            <div class="portfolio-category">
+    <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+        <h3 class="category-title"><i class="fas fa-video"></i> معرض الفيديوهات</h3>
         
-        <div class="portfolio-track" id="portfolio-track">
+        <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="youtube">يوتيوب</button>
+            <button class="filter-btn" data-filter="shorts">شورتس وريلز</button>
+            <button class="filter-btn" data-filter="education">تعليمي</button>
+            <button class="filter-btn" data-filter="podcast">بودكاست</button>
+            <button class="filter-btn" data-filter="ads">إعلانات</button>
+            <button class="filter-btn" data-filter="graduation">مشاريع تخرج</button>
+        </div>
+    </div>
+
+    <div class="slider-wrapper">
+        <button class="slider-btn right-btn" onclick="scrollContainer('videoGallery', 1)"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="video-gallery" id="videoGallery">
+            
+            <div class="video-item glass filter-item" data-category="youtube">
+                <iframe src="https://www.youtube.com/embed/e8XCS6M8CbE?si=z50kP2kMcLmLRp2G" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item glass filter-item" data-category="youtube">
+                <iframe src="https://www.youtube.com/embed/rdS9wcpmSPU?si=HC34o8L_sT-VxXAJ" frameborder="0" allowfullscreen></iframe>
+            </div>
+             <div class="video-item glass filter-item" data-category="youtube">
+                <iframe src="https://www.youtube.com/embed/EY65ACB3CWE?si=2SHI0L09MOgzaH49" frameborder="0" allowfullscreen></iframe>
+            </div>
+             <div class="video-item glass filter-item" data-category="youtube">
+                <iframe src="https://www.youtube.com/embed/Bvn5qvMHdbA?si=Zu-1ddit13ZCn9ba" frameborder="0" allowfullscreen></iframe>
             </div>
 
-        <button class="slide-arrow left-arrow" onclick="slideTrack(1)"><i class="fas fa-chevron-left"></i></button>
-    </div>        <button class="slider-btn left-btn" onclick="scrollContainer('videoGallery', -1)"><i class="fas fa-chevron-left"></i></button>
+
+
+            <div class="video-item glass filter-item" data-category="education">
+                <iframe src="https://www.youtube.com/embed/rdS9wcpmSPU" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-item glass filter-item shorts-video" data-category="shorts">
+                <iframe src="https://www.youtube.com/embed/iXYnFHocgOY?si=VaLCbUao-UHhuyAo" frameborder="0" allowfullscreen></iframe>
+            </div>
+                        <div class="video-item glass filter-item shorts-video" data-category="shorts">
+                <iframe src="https://www.youtube.com/embed/-u266TAxU04?si=W8kE7M8Ml11pTpIg" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item glass filter-item shorts-video" data-category="shorts">
+                <iframe src="https://www.youtube.com/embed/_Q_cUX80hT8?si=GLf3gc_giZSjmia3" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item glass filter-item shorts-video" data-category="shorts">
+                <iframe src="https://www.youtube.com/embed/N4OvQz-OG20?si=DSiNbjcRu8OJtdnx" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item glass filter-item shorts-video" data-category="shorts">
+                <iframe src="https://www.youtube.com/embed/3L4qKn1V9yw?si=icMGxjMsP_Jw5Npp" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            
+                        <div class="video-item glass filter-item" data-category="podcast">
+                <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fweb.facebook.com%2F100004178612344%2Fvideos%2F1647793805973670%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+            </div>
+
+            <div class="video-item glass filter-item" data-category="ads">
+                <iframe src="https://drive.google.com/file/d/1diz-gIW1DpychCZ5rDRfmszuDH55XnOn/preview" width="640" height="480" allow="autoplay" frameborder="0" allowfullscreen></iframe>
+
+            <div class="video-item glass filter-item" data-category="graduation">
+                <iframe src="https://www.youtube.com/embed/rdS9wcpmSPU" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <a href="portfolio.html" class="filter-item view-more-card" style="text-decoration: none;">
+                <i class="fas fa-arrow-left"></i>
+                <h3>عرض الكل</h3>
+            </a>
+            
+        </div>
+
+        <button class="slider-btn left-btn" onclick="scrollContainer('videoGallery', -1)"><i class="fas fa-chevron-left"></i></button>
     </div>
 </div>
     <h3 class="category-title"><i class="fas fa-image"></i> تصاميم الـ Thumbnails</h3>
@@ -350,86 +402,30 @@
     <footer>
         </footer>
 <script>
-// فلترة معرض الأعمال
-    function filterPortfolio(category, btnElement) {
-        // تغيير لون الزرار النشط
-        const buttons = document.querySelectorAll('.filter-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
-        btnElement.classList.add('active');
+    // برمجة زراير الفلترة
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filterItems = document.querySelectorAll('.filter-item');
 
-        // جلب كل الفيديوهات
-        const items = document.querySelectorAll('.portfolio-item');
-        
-        items.forEach(item => {
-            const itemCategories = item.getAttribute('data-category').split(' ');
-            
-            if (category === 'all' || itemCategories.includes(category)) {
-                item.style.display = 'block';
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'scale(1)';
-                }, 50);
-            } else {
-                item.style.opacity = '0';
-                item.style.transform = 'scale(0.8)';
-                setTimeout(() => {
-                    item.style.display = 'none';
-                }, 400); // استنى الأنيميشن يخلص وبعدين اخفيه
-            }
-        });
-    }
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // 1. نشيل كلاس active من كل الزراير ونحطه للزرار اللي انداس عليه بس
+            filterBtns.forEach(button => button.classList.remove('active'));
+            btn.classList.add('active');
 
-function loadSlider(category, btnElement) {
-            // تلوين الزرار
-            if(btnElement) {
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                btnElement.classList.add('active');
-            }
+            // 2. نجيب اسم القسم اللي العميل اختاره
+            const filterValue = btn.getAttribute('data-filter');
 
-            const track = document.getElementById('portfolio-track');
-            track.innerHTML = ''; // تنظيف السلايدر
-
-            // فلترة المشاريع
-            const filtered = allProjects.filter(p => category === 'all' || p.categories.includes(category));
-            
-            // ناخد أول 4 مشاريع بس
-            const top4 = filtered.slice(0, 4);
-
-            top4.forEach(project => {
-                track.innerHTML += `<div class="portfolio-item ${project.type}">${project.content}</div>`;
+            // 3. نفلتر الفيديوهات
+            filterItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.classList.remove('hide');
+                } else {
+                    item.classList.add('hide');
+                }
             });
+        });
+    });
 
-            // لو فيه مشاريع أكتر من 4، نحط كارت "عرض الكل"
-            if(filtered.length > 4 || category === 'all') {
-                track.innerHTML += `
-                    <div class="portfolio-item view-all-card" onclick="openAllWorks('${category}')">
-                        <div class="view-all-content">
-                            <i class="fas fa-arrow-left"></i>
-                            <h3>عرض الكل</h3>
-                            <p>شاهد جميع الأعمال في هذا القسم</p>
-                        </div>
-                    </div>
-                `;
-            }
-        }
-
-        // تحريك السهم يمين وشمال
-        function slideTrack(direction) {
-            const track = document.getElementById('portfolio-track');
-            const scrollAmount = 320; // المسافة اللي هيتحركها
-            // عشان إحنا عربي (RTL) الاتجاهات بتتعكس في الكود
-            track.scrollBy({ left: direction * scrollAmount * -1, behavior: 'smooth' });
-        }
-
-        // فتح صفحة عرض الكل
-        function openAllWorks(category) {
-            localStorage.setItem('portfolioCategory', category);
-            window.location.href = 'portfolio.html';
-        }
-
-        // تشغيل (الكل) أول ما الصفحة تفتح
-        window.addEventListener('load', () => loadSlider('all', document.querySelector('.filter-btn.active')));
-    
     // دالة تحويل العملات اللحظية
     async function convertPricesToLocal() {
         try {
@@ -558,13 +554,18 @@ function loadSlider(category, btnElement) {
         // تحويل العميل لصفحة الطلب الجديدة
         window.location.href = 'custom-order.html';
     }
-</script>
 
-<script src="projects.js"></script>
+// دالة تحريك السلايدر بالأسهم (تم تعديل الاتجاه)
+    function scrollContainer(containerId, direction) {
+        const container = document.getElementById(containerId);
+        if(container) {
+            const scrollAmount = window.innerWidth > 768 ? 360 : 250;
+            // شيلنا الـ (* -1) عشان نعكس حركة السحب وتبقى ماشية مع اتجاه السهم بالظبط
+            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+    }
+    </script>
+
+
 </body>
 </html>
-
-
-
-
-
