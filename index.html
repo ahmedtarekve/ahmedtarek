@@ -109,87 +109,24 @@
         <p style="color: #aaa; margin-top: 10px;">اختر التصنيف لمشاهدة سابقة أعمالي</p>
     </div>
 
-    <div class="filter-buttons">
-        <button class="filter-btn active" onclick="filterPortfolio('all', this)">الكل</button>
-        <button class="filter-btn" onclick="filterPortfolio('youtube', this)">يوتيوب</button>
-        <button class="filter-btn" onclick="filterPortfolio('shorts', this)">شورتس / ريلز</button>
-        <button class="filter-btn" onclick="filterPortfolio('education', this)">كورسات تعليمية</button>
-        <button class="filter-btn" onclick="filterPortfolio('ads', this)">إعلانات وبروموهات</button>
-        <button class="filter-btn" onclick="filterPortfolio('podcast', this)">بودكاست</button>
-        <button class="filter-btn" onclick="filterPortfolio('graduation', this)">مشاريع تخرج</button>
+   <div class="filter-buttons">
+        <button class="filter-btn active" onclick="loadSlider('all', this)">الكل</button>
+        <button class="filter-btn" onclick="loadSlider('youtube', this)">يوتيوب</button>
+        <button class="filter-btn" onclick="loadSlider('shorts', this)">شورتس / ريلز</button>
+        <button class="filter-btn" onclick="loadSlider('education', this)">كورسات تعليمية</button>
+        <button class="filter-btn" onclick="loadSlider('ads', this)">إعلانات وبروموهات</button>
+        <button class="filter-btn" onclick="loadSlider('podcast', this)">بودكاست</button>
+        <button class="filter-btn" onclick="loadSlider('graduation', this)">مشاريع تخرج</button>
     </div>
 
-    <div class="portfolio-grid">
+    <div class="carousel-wrapper">
+        <button class="slide-arrow" onclick="slideTrack(-1)"><i class="fas fa-chevron-right"></i></button>
         
-        <div class="portfolio-item vertical" data-category="ads shorts">
-            <iframe src="https://drive.google.com/file/d/1diz-gIW1DpychCZ5rDRfmszuDH55XnOn/preview" loading="lazy" allowfullscreen></iframe>
-        </div>
-        <div class="portfolio-item vertical" data-category="education ads shorts">
-            <iframe src="https://drive.google.com/file/d/1tVlDVDe3mjkvY2PudVk6M4xdakan1MP_/preview" loading="lazy" allowfullscreen></iframe>
-        </div>
-        <div class="portfolio-item vertical" data-category="education ads shorts">
-            <iframe src="https://drive.google.com/file/d/1jyHk7CZ1a5VjabwJ09WW_IUaT4c2Ydov/preview" loading="lazy" allowfullscreen></iframe>
-        </div>
-        <div class="portfolio-item horizontal" data-category="youtube">
-            <iframe src="https://drive.google.com/file/d/1JD1-oYFM7DmVFrpYOz2enwQYj6b7dhW5/preview" loading="lazy" allowfullscreen></iframe>
-        </div>
-        <div class="portfolio-item horizontal" data-category="education ads">
-            <iframe src="https://drive.google.com/file/d/17YC2GfmZRVh0SPTqcYH-UrQpux8BQbJp/preview" loading="lazy" allowfullscreen></iframe>
-        </div>
-        <div class="portfolio-item horizontal" data-category="youtube">
-            <iframe src="https://drive.google.com/file/d/1n3v68PEiYd-vWHHT9M_CZIBZ30Msds0y/preview" loading="lazy" allowfullscreen></iframe>
-        </div>
-        <div class="portfolio-item horizontal" data-category="youtube">
-            <iframe src="https://drive.google.com/file/d/1QNpLsTZGKMyA0mQns6by57NDUcUgllsZ/preview" loading="lazy" allowfullscreen></iframe>
-        </div>
-        <div class="portfolio-item horizontal" data-category="youtube shorts">
-            <iframe src="https://drive.google.com/file/d/1BNgZ7RL_6uaEN6nZTyci-H3zWiSwEL0c/preview" loading="lazy" allowfullscreen></iframe>
-        </div>
-        
-        <div class="portfolio-item vertical fb-card" data-category="graduation shorts">
-            <div class="fb-content">
-                <i class="fab fa-facebook" style="font-size: 3rem; color: #1877F2;"></i>
-                <h4>مشروع تخرج (طولي)</h4>
-                <a href="https://web.facebook.com/share/v/17r6CqgAqh/" target="_blank" class="fb-btn">شاهد على فيسبوك</a>
+        <div class="portfolio-track" id="portfolio-track">
             </div>
-        </div>
-        <div class="portfolio-item horizontal fb-card" data-category="graduation podcast">
-            <div class="fb-content">
-                <i class="fab fa-facebook" style="font-size: 3rem; color: #1877F2;"></i>
-                <h4>مشروع تخرج - بودكاست</h4>
-                <a href="https://web.facebook.com/share/v/1C8KMcShyy/" target="_blank" class="fb-btn">شاهد على فيسبوك</a>
-            </div>
-        </div>
 
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/e8XCS6M8CbE" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/rdS9wcpmSPU" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/EY65ACB3CWE" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/Bvn5qvMHdbA" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/x9D6-hoB4Yg" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/QBW9tl2J41g" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/b6hV9DAzzH4" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/LWay_4bqpgA" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/B4MhKysYNoM" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/8cEb-8OLMLg" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/WPK-IDTCkc0" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/lqyx5sT0bSA" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/6b65db6hTso" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/9DNmcNEYA5o" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/Wfz841yMkYI" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/rArSsvcL0wg" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item horizontal" data-category="youtube"><iframe src="https://www.youtube.com/embed/JV5x5uKfSfo" loading="lazy" allowfullscreen></iframe></div>
-
-        <div class="portfolio-item vertical" data-category="youtube shorts"><iframe src="https://www.youtube.com/embed/3L4qKn1V9yw" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item vertical" data-category="youtube shorts"><iframe src="https://www.youtube.com/embed/XKGeGHJrFTM" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item vertical" data-category="youtube shorts"><iframe src="https://www.youtube.com/embed/OmtjArhrDyw" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item vertical" data-category="youtube shorts"><iframe src="https://www.youtube.com/embed/AaVivfRUo_Y" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item vertical" data-category="youtube shorts"><iframe src="https://www.youtube.com/embed/q4335uZCmzY" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item vertical" data-category="youtube shorts"><iframe src="https://www.youtube.com/embed/iXYnFHocgOY" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item vertical" data-category="youtube shorts"><iframe src="https://www.youtube.com/embed/-u266TAxU04" loading="lazy" allowfullscreen></iframe></div>
-        <div class="portfolio-item vertical" data-category="youtube shorts"><iframe src="https://www.youtube.com/embed/_Q_cUX80hT8" loading="lazy" allowfullscreen></iframe></div>
+        <button class="slide-arrow" onclick="slideTrack(1)"><i class="fas fa-chevron-left"></i></button>
     </div>
-</div>
-
         <button class="slider-btn left-btn" onclick="scrollContainer('videoGallery', -1)"><i class="fas fa-chevron-left"></i></button>
     </div>
 </div>
@@ -442,6 +379,58 @@
             }
         });
     }
+
+function loadSlider(category, btnElement) {
+            // تلوين الزرار
+            if(btnElement) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                btnElement.classList.add('active');
+            }
+
+            const track = document.getElementById('portfolio-track');
+            track.innerHTML = ''; // تنظيف السلايدر
+
+            // فلترة المشاريع
+            const filtered = allProjects.filter(p => category === 'all' || p.categories.includes(category));
+            
+            // ناخد أول 4 مشاريع بس
+            const top4 = filtered.slice(0, 4);
+
+            top4.forEach(project => {
+                track.innerHTML += `<div class="portfolio-item ${project.type}">${project.content}</div>`;
+            });
+
+            // لو فيه مشاريع أكتر من 4، نحط كارت "عرض الكل"
+            if(filtered.length > 4 || category === 'all') {
+                track.innerHTML += `
+                    <div class="portfolio-item view-all-card" onclick="openAllWorks('${category}')">
+                        <div class="view-all-content">
+                            <i class="fas fa-arrow-left"></i>
+                            <h3>عرض الكل</h3>
+                            <p>شاهد جميع الأعمال في هذا القسم</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // تحريك السهم يمين وشمال
+        function slideTrack(direction) {
+            const track = document.getElementById('portfolio-track');
+            const scrollAmount = 320; // المسافة اللي هيتحركها
+            // عشان إحنا عربي (RTL) الاتجاهات بتتعكس في الكود
+            track.scrollBy({ left: direction * scrollAmount * -1, behavior: 'smooth' });
+        }
+
+        // فتح صفحة عرض الكل
+        function openAllWorks(category) {
+            localStorage.setItem('portfolioCategory', category);
+            window.location.href = 'portfolio.html';
+        }
+
+        // تشغيل (الكل) أول ما الصفحة تفتح
+        window.addEventListener('load', () => loadSlider('all', document.querySelector('.filter-btn.active')));
+    
     // دالة تحويل العملات اللحظية
     async function convertPricesToLocal() {
         try {
@@ -572,9 +561,10 @@
     }
 </script>
 
-
+<script src="projects.js"></script>
 </body>
 </html>
+
 
 
 
