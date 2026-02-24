@@ -1421,19 +1421,22 @@ input[type="number"] {
 .fb-btn:hover { background: #145dbf; }
 
 /* ---- ستايل السلايدر (نتفليكس ستايل) ---- */
+/* ---- ستايل السلايدر المتوافق مع كل الشاشات والمتصفحات ---- */
+
+/* 1. السلايدر الأساسي */
 .carousel-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
     margin-top: 30px;
-    padding: 0 30px; /* مساحة للأسهم */
+    padding: 0 40px; /* مساحة للأسهم عشان متغطيش على الفيديو */
 }
 
 .portfolio-track {
     display: flex;
-    align-items: center; /* بيخلي كل الكروت متسنترة على خط واحد */
-    gap: 20px;
+    align-items: center;
+    gap: 15px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding: 20px 0;
@@ -1447,7 +1450,7 @@ input[type="number"] {
     display: none; 
 }
 
-/* الكارت الأساسي */
+/* 2. الكارت الأساسي (منع الانضغاط) */
 .portfolio-track .portfolio-item {
     flex: 0 0 auto; 
     scroll-snap-align: center;
@@ -1458,42 +1461,39 @@ input[type="number"] {
     overflow: hidden;
 }
 
-/* 1. مقاس الفيديوهات العريضة (يوتيوب وبروموهات) */
+/* 3. المقاسات الديناميكية (السر هنا في الـ Aspect Ratio) */
 .portfolio-track .horizontal {
     width: 320px;
-    height: 180px;
+    aspect-ratio: 16 / 9; /* بيحافظ على شكل المستطيل دايماً */
+    height: auto;
 }
 
-.portfolio-track .horizontal iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-/* 2. مقاس الفيديوهات الطولية (الشورتس) */
 .portfolio-track .vertical {
     width: 200px;
-    height: 355px;
+    aspect-ratio: 9 / 16; /* بيحافظ على شكل الشورتس دايماً */
+    height: auto;
 }
 
-/* تظبيط فيديوهات يوتيوب شورتس الطبيعية */
-.portfolio-track .vertical iframe {
+.portfolio-item iframe {
     width: 100%;
     height: 100%;
     border: none;
+    max-width: none !important; /* بيمنع أي كود خارجي يبوظ العرض */
 }
 
-/* 🚨 التريكة السحرية: تظبيط فيديوهات جوجل درايف الطولية فقط 🚨 */
+/* 4. التريكة السحرية لجوجل درايف (إصلاح متصفح Edge) */
 .portfolio-track .vertical iframe[src*="drive.google.com"] {
     position: absolute;
     top: 0;
-    left: 50%; /* بنحركه للنص */
+    left: 50%;
     height: 100%;
-    width: 631px; /* بندي للمشغل عرضه الوهمي عشان ميقصش زرار الـ Play */
-    transform: translateX(-50%); /* بنسنتره بالملي في الكارت بتاعنا */
+    /* 316% دي النسبة الرياضية الدقيقة عشان تحول 16:9 لـ 9:16 من غير ما يقص شريط التشغيل */
+    width: 316%; 
+    max-width: none !important;
+    transform: translateX(-50%);
 }
 
-/* زراير الأسهم */
+/* 5. زراير الأسهم */
 .slide-arrow {
     position: absolute;
     top: 50%;
@@ -1522,11 +1522,11 @@ input[type="number"] {
 .right-arrow { right: 0; }
 .left-arrow { left: 0; }
 
-/* كارت عرض الكل (بيظهر في آخر السلايدر) */
+/* 6. كارت عرض الكل */
 .view-all-card {
     width: 200px;
-    height: 100%;
-    min-height: 180px;
+    aspect-ratio: 1 / 1; /* مربع شيك */
+    height: auto;
     background: linear-gradient(145deg, rgba(245,158,11,0.1), rgba(0,0,0,0.5));
     border: 2px dashed #f59e0b;
     display: flex;
@@ -1539,3 +1539,24 @@ input[type="number"] {
 .view-all-content { text-align: center; color: #f59e0b; }
 .view-all-content i { font-size: 2.5rem; margin-bottom: 10px; }
 .view-all-content h3 { margin: 0 0 5px; color: #fff; font-size: 1.1rem; }
+
+/* 7. تظبيط الموبايل (عشان الفيديو ميبقاش مقصوص من الجناب) */
+@media (max-width: 768px) {
+    .carousel-wrapper {
+        padding: 0 10px; /* تقليل المساحة الخارجية */
+    }
+    
+    .portfolio-track .horizontal {
+        width: 85vw; /* بياخد 85% من عرض شاشة الموبايل */
+    }
+
+    .portfolio-track .vertical {
+        width: 60vw; /* بياخد 60% من عرض شاشة الموبايل */
+    }
+    
+    .slide-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
