@@ -414,30 +414,34 @@
     <footer>
         </footer>
 <script>
-    // برمجة زراير الفلترة
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const filterItems = document.querySelectorAll('.filter-item');
+// فلترة معرض الأعمال
+    function filterPortfolio(category, btnElement) {
+        // تغيير لون الزرار النشط
+        const buttons = document.querySelectorAll('.filter-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        btnElement.classList.add('active');
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // 1. نشيل كلاس active من كل الزراير ونحطه للزرار اللي انداس عليه بس
-            filterBtns.forEach(button => button.classList.remove('active'));
-            btn.classList.add('active');
-
-            // 2. نجيب اسم القسم اللي العميل اختاره
-            const filterValue = btn.getAttribute('data-filter');
-
-            // 3. نفلتر الفيديوهات
-            filterItems.forEach(item => {
-                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                    item.classList.remove('hide');
-                } else {
-                    item.classList.add('hide');
-                }
-            });
+        // جلب كل الفيديوهات
+        const items = document.querySelectorAll('.portfolio-item');
+        
+        items.forEach(item => {
+            const itemCategories = item.getAttribute('data-category').split(' ');
+            
+            if (category === 'all' || itemCategories.includes(category)) {
+                item.style.display = 'block';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
+                }, 50);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 400); // استنى الأنيميشن يخلص وبعدين اخفيه
+            }
         });
-    });
-
+    }
     // دالة تحويل العملات اللحظية
     async function convertPricesToLocal() {
         try {
@@ -571,5 +575,6 @@
 
 </body>
 </html>
+
 
 
