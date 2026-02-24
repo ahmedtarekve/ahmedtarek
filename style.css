@@ -843,136 +843,71 @@ input[type="number"] {
     box-shadow: 0 0 30px rgba(245, 158, 11, 0.8);
 }
 
-/* ---- ستايل شريط الفيديوهات (Horizontal Slider) ---- */
-.video-slider-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
-}
+/* ========================================= */
+/* ---- النظام الموحد للسلايدر ومعرض الأعمال ---- */
+/* ========================================= */
 
-.video-row {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 15px 5px;
-    scroll-snap-type: x mandatory; /* بيجبر الفيديو يقف في النص بالظبط لما تسحب */
-    
-    /* إخفاء شريط التمرير (Scrollbar) لشكل أنضف */
-    -ms-overflow-style: none;  /* لمتصفح إيدج */
-    scrollbar-width: none;  /* لمتصفح فايرفوكس */
-}
-.video-row::-webkit-scrollbar {
-    display: none; /* لمتصفح كروم وسفاري */
-}
-
-.video-row .video-item {
-    /* ع البي سي هنخلي 3 فيديوهات يظهروا في الشاشة */
-    flex: 0 0 calc(33.333% - 15px); 
-    min-width: 300px; /* أقل عرض للفيديو */
-    aspect-ratio: 16 / 9;
-    scroll-snap-align: center; /* نقطة وقوف الفيديو */
-}
-
-.video-row .video-item iframe {
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-}
-
-/* ---- زراير التحريك (الأسهم) ---- */
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    z-index: 10;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    transition: 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.slider-btn:hover {
-    background: #d97706; /* لون أغمق سنة لما تقف عليه */
-    transform: translateY(-50%) scale(1.1);
-}
-
-.right-btn { right: -20px; } /* مكان سهم اليمين */
-.left-btn { left: -20px; }  /* مكان سهم الشمال */
-
-/* ---- تظبيط الموبايل (Media Query) ---- */
-@media (max-width: 768px) {
-    .slider-btn {
-        display: none; /* إخفاء الأسهم ع الموبايل عشان العميل هيسحب بصباعه */
-    }
-    .video-row .video-item {
-        /* ع الموبايل الفيديو ياخد 85% من الشاشة عشان يبان للعميل إن فيه فيديوهات تانية جنبه */
-        flex: 0 0 85%; 
-    }
-    .video-row {
-        padding: 10px 0;
-    }
-}
-
-/* ---- ستايل السلايدر الموحد (Slider System) ---- */
 .slider-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
     margin-top: 20px;
+    padding: 0 40px; /* مساحة للأسهم */
 }
 
-.slider-row {
+.video-gallery, .slider-row {
     display: flex;
+    align-items: center; /* بيخلي الكروت متسنترة على خط واحد */
     gap: 20px;
     overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 15px 5px;
     scroll-snap-type: x mandatory;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+    width: 100%;
 }
 
-.slider-row::-webkit-scrollbar { display: none; }
-
-/* حجم الفيديوهات في السلايدر */
-.video-item {
-    flex: 0 0 calc(33.333% - 15px);
-    min-width: 300px;
-    aspect-ratio: 16 / 9;
-    scroll-snap-align: center;
+.video-gallery::-webkit-scrollbar, .slider-row::-webkit-scrollbar { 
+    display: none; 
 }
 
-/* حجم الصور المصغرة في السلايدر */
-.thumb-card {
-    flex: 0 0 calc(25% - 15px); /* يظهر 4 صور في الشاشة ع البي سي */
-    min-width: 250px;
-    aspect-ratio: 16 / 9;
+/* ---- الكروت (فيديوهات - صور - تقييمات) ---- */
+.filter-item, .thumb-card, .review-card {
+    flex: 0 0 auto;
     scroll-snap-align: center;
     border-radius: 12px;
+    background: #111;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.thumb-card img {
-    width: 100%;
+/* المقاسات الرياضية الصارمة (للكمبيوتر) */
+.filter-item { width: 340px; aspect-ratio: 16 / 9; height: auto; }
+.filter-item.shorts-video { width: 220px; aspect-ratio: 9 / 16; height: auto; }
+.thumb-card { width: 300px; aspect-ratio: 16 / 9; height: auto; }
+.review-card { width: 340px; height: auto; padding: 25px; display: flex; flex-direction: column; gap: 15px; }
+
+/* المشغلات والصور */
+.filter-item iframe, .thumb-card img {
+    width: 100%; height: 100%; border: none; object-fit: cover; display: block;
+}
+
+/* 🚨 التريكة السحرية لجوجل درايف (إصلاح Edge والموبايل) 🚨 */
+.filter-item.shorts-video iframe[src*="drive.google.com"] {
+    position: absolute;
+    top: 0;
+    left: 50%;
     height: 100%;
-    object-fit: cover;
-    transition: 0.5s ease;
+    width: 316.05%; /* النسبة الرياضية الدقيقة لتحويل 16:9 لـ 9:16 بدون شاشة سوداء */
+    max-width: none !important;
+    transform: translateX(-50%);
 }
 
-/* الأسهم (نفس التصميم اللي فات) */
+/* ---- زراير الأسهم ---- */
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -980,174 +915,61 @@ input[type="number"] {
     background: var(--primary-color);
     color: white;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 45px; height: 45px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 10;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    display: flex; justify-content: center; align-items: center;
+    transition: 0.3s;
 }
+.slider-btn:hover { background: #d97706; transform: translateY(-50%) scale(1.1); }
+.right-btn { right: -10px; }
+.left-btn { left: -10px; }
 
-.right-btn { right: -15px; }
-.left-btn { left: -15px; }
-
-@media (max-width: 768px) {
-    .slider-btn { display: none; }
-    .video-item, .thumb-card { flex: 0 0 85%; }
-}
-
-/* ---- ستايل زراير الفلترة ---- */
+/* ---- زراير الفلترة وأنيميشن الإخفاء ---- */
 .filter-tabs {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 15px;
 }
-
 .filter-btn {
-    padding: 8px 20px;
-    background: transparent;
-    border: 1px solid var(--primary-color, #f59e0b);
-    color: white;
-    border-radius: 30px;
-    font-family: inherit;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 8px 20px; background: transparent; border: 1px solid var(--primary-color);
+    color: white; border-radius: 30px; font-weight: bold; cursor: pointer; transition: 0.3s;
 }
+.filter-btn:hover, .filter-btn.active { background: var(--primary-color); color: #fff; }
 
-.filter-btn:hover, .filter-btn.active {
-    background: var(--primary-color, #f59e0b);
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+.filter-item.hide { display: none; }
+
+/* كارت عرض الكل */
+.view-more-card {
+    width: 220px; aspect-ratio: 1 / 1; height: auto;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; color: #f59e0b; background: rgba(245,158,11,0.05); 
+    border: 2px dashed #f59e0b; border-radius: 12px; transition: 0.3s;
+    text-decoration: none;
 }
+.view-more-card:hover { transform: scale(1.05); background: rgba(245,158,11,0.15); }
+.view-more-card i { font-size: 2.5rem; margin-bottom: 10px; }
+.view-more-card h3 { color: #fff; margin: 0; font-size: 1.2rem; }
 
-/* ---- شبكة الفيديوهات المفلترة ---- */
-.video-gallery {
-    display: flex;
-    align-items: center; /* السطر السحري اللي هيحل المشكلة */
-    gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 15px 5px;
-    scroll-snap-type: x mandatory;
+/* تصميم داخلي لكارت التقييم (عشان مسحناه مع القديم) */
+.reviewer-info { display: flex; align-items: center; gap: 15px; }
+.reviewer-avatar { font-size: 3rem; color: #555; }
+.reviewer-details h4 { margin: 0 0 5px 0; font-size: 1.1rem; color: #fff; }
+.stars { color: #f59e0b; font-size: 0.9rem; letter-spacing: 2px; }
+.review-text { color: #ccc; font-size: 0.95rem; line-height: 1.6; font-style: italic; margin: 0; }
+
+/* 📱 تظبيط الموبايل (عشان متتضغطش وتفضل بنسبتها) 📱 */
+@media (max-width: 768px) {
+    .slider-wrapper { padding: 0 5px; }
+    .slider-btn { display: none; } /* إخفاء الأسهم للسحب بالإيد */
     
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
+    .filter-item { width: 85vw; }
+    .filter-item.shorts-video { width: 65vw; }
+    .thumb-card { width: 85vw; }
+    .review-card { width: 85vw; }
+    .view-more-card { width: 50vw; }
 }
-.video-gallery::-webkit-scrollbar {
-    display: none; 
-}
-.filter-item {
-    flex: 0 0 calc(33.333% - 15px); /* بيعرض 3 فيديوهات جنب بعض ع البي سي */
-    min-width: 320px;
-    aspect-ratio: 16 / 9;
-    scroll-snap-align: center;
-    border-radius: 12px;
-    overflow: hidden;
-    animation: fadeIn 0.4s ease;
-    transition: all 0.3s ease;
-}
-.filter-item iframe {
-    width: 100%;
-    height: 100%;
-}
-
-/* تظبيطة مخصوصة للشورتس عشان تظهر بالطول مش بالعرض */
-.filter-item.shorts-video {
-    aspect-ratio: 9 / 16;
-    flex: 0 0 calc(20% - 15px); /* بياخد مساحة أصغر عشان يعرض شورتس أكتر */
-    min-width: 220px;
-}
-/* أنيميشن الظهور والاختفاء */
-.filter-item.hide {
-    display: none;
-}
-@media (max-width: 768px) {
-    .filter-item {
-        flex: 0 0 85%; /* الفيديو ياخد 85% من الشاشة ع الموبايل */
-        min-width: 280px;
-    }
-    .filter-item.shorts-video {
-        flex: 0 0 65%; /* الشورتس ياخد مساحة أقل ع الموبايل */
-        min-width: 200px;
-    }
-}
-@keyframes fadeIn {
-    0% { opacity: 0; transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
-}
-/* ---- ستايل قسم آراء العملاء ---- */
-.review-card {
-    flex: 0 0 calc(33.333% - 15px); /* بيعرض 3 كروت جنب بعض ع البي سي */
-    min-width: 320px;
-    padding: 25px;
-    border-radius: 15px;
-    scroll-snap-align: start;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background: rgba(255, 255, 255, 0.03); /* لون شفاف خفيف */
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s ease;
-}
-
-.review-card:hover {
-    transform: translateY(-5px); /* الكارت بيترفع لفوق سنة لما تقف عليه */
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.reviewer-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.reviewer-avatar {
-    font-size: 3rem;
-    color: #555; /* لون أيقونة الشخص */
-}
-
-/* لو حبيت تحط صورة حقيقية للعميل بدل الأيقونة في المستقبل */
-.reviewer-avatar img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.reviewer-details h4 {
-    margin: 0 0 5px 0;
-    font-size: 1.1rem;
-    color: #fff;
-}
-
-.stars {
-    color: #f59e0b; /* لون النجوم الذهبي */
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-}
-
-.review-text {
-    color: #ccc;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 0;
-    font-style: italic; /* بيخلي الخط مايل سنة عشان يبان إنه اقتباس */
-}
-
-/* تظبيط الموبايل */
-@media (max-width: 768px) {
-    .review-card {
-        flex: 0 0 85%; /* الكارت بياخد 85% من الشاشة عشان يبان إن فيه كروت تانية جنبه */
-        min-width: 280px;
-    }
-}
-
+/* ========================================= */
 
 /* ---- ستايل قسم الباقات ---- */
 .pricing-grid {
@@ -1343,220 +1165,4 @@ input[type="number"] {
     margin-top: 20px;
     padding-top: 20px;
     min-height: 120px; /* عشان الموقع مايفضلش ينط لفوق وتحت مع التحميل */
-}
-
-/* ---- ستايل معرض الأعمال والفلترة ---- */
-.filter-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 30px;
-}
-
-.filter-btn {
-    background: transparent;
-    border: 1px solid #f59e0b;
-    color: #f59e0b;
-    padding: 8px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
-
-.filter-btn:hover, .filter-btn.active {
-    background: #f59e0b;
-    color: #fff;
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-auto-rows: 200px; /* الارتفاع الأساسي للفيديو العريض */
-    gap: 20px;
-}
-
-.portfolio-item {
-    border-radius: 12px;
-    overflow: hidden;
-    background: #1a1a1a;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    border: 1px solid #333;
-}
-
-.portfolio-item iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-/* تنسيق الطول والعرض */
-.portfolio-item.horizontal {
-    grid-row: span 1; /* بياخد صف واحد */
-}
-
-.portfolio-item.vertical {
-    grid-row: span 2; /* الشورتس بياخد صفين عشان يبقى أطول */
-}
-
-/* كروت الفيسبوك */
-.fb-card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(145deg, #111, #222);
-    text-align: center;
-}
-.fb-content h4 { color: #fff; margin: 15px 0; }
-.fb-btn {
-    display: inline-block;
-    background: #1877F2;
-    color: #fff;
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-}
-.fb-btn:hover { background: #145dbf; }
-
-/* ---- ستايل السلايدر (نتفليكس ستايل) ---- */
-/* ---- ستايل السلايدر المتوافق مع كل الشاشات والمتصفحات ---- */
-
-/* 1. السلايدر الأساسي */
-.carousel-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-top: 30px;
-    padding: 0 40px; /* مساحة للأسهم عشان متغطيش على الفيديو */
-}
-
-.portfolio-track {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 20px 0;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
-    width: 100%;
-}
-
-.portfolio-track::-webkit-scrollbar {
-    display: none; 
-}
-
-/* 2. الكارت الأساسي (منع الانضغاط) */
-.portfolio-track .portfolio-item {
-    flex: 0 0 auto; 
-    scroll-snap-align: center;
-    border-radius: 12px;
-    background: #000;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    position: relative;
-    overflow: hidden;
-}
-
-/* 3. المقاسات الديناميكية (السر هنا في الـ Aspect Ratio) */
-.portfolio-track .horizontal {
-    width: 320px;
-    aspect-ratio: 16 / 9; /* بيحافظ على شكل المستطيل دايماً */
-    height: auto;
-}
-
-.portfolio-track .vertical {
-    width: 200px;
-    aspect-ratio: 9 / 16; /* بيحافظ على شكل الشورتس دايماً */
-    height: auto;
-}
-
-.portfolio-item iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    max-width: none !important; /* بيمنع أي كود خارجي يبوظ العرض */
-}
-
-/* 4. التريكة السحرية لجوجل درايف (إصلاح متصفح Edge) */
-.portfolio-track .vertical iframe[src*="drive.google.com"] {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    height: 100%;
-    /* 316% دي النسبة الرياضية الدقيقة عشان تحول 16:9 لـ 9:16 من غير ما يقص شريط التشغيل */
-    width: 316%; 
-    max-width: none !important;
-    transform: translateX(-50%);
-}
-
-/* 5. زراير الأسهم */
-.slide-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #f59e0b;
-    color: #fff;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    z-index: 10;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-}
-
-.slide-arrow:hover { 
-    background: #d97706; 
-    transform: translateY(-50%) scale(1.1); 
-}
-
-.right-arrow { right: 0; }
-.left-arrow { left: 0; }
-
-/* 6. كارت عرض الكل */
-.view-all-card {
-    width: 200px;
-    aspect-ratio: 1 / 1; /* مربع شيك */
-    height: auto;
-    background: linear-gradient(145deg, rgba(245,158,11,0.1), rgba(0,0,0,0.5));
-    border: 2px dashed #f59e0b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.view-all-card:hover { transform: scale(1.05); background: rgba(245,158,11,0.2); }
-.view-all-content { text-align: center; color: #f59e0b; }
-.view-all-content i { font-size: 2.5rem; margin-bottom: 10px; }
-.view-all-content h3 { margin: 0 0 5px; color: #fff; font-size: 1.1rem; }
-
-/* 7. تظبيط الموبايل (عشان الفيديو ميبقاش مقصوص من الجناب) */
-@media (max-width: 768px) {
-    .carousel-wrapper {
-        padding: 0 10px; /* تقليل المساحة الخارجية */
-    }
-    
-    .portfolio-track .horizontal {
-        width: 85vw; /* بياخد 85% من عرض شاشة الموبايل */
-    }
-
-    .portfolio-track .vertical {
-        width: 60vw; /* بياخد 60% من عرض شاشة الموبايل */
-    }
-    
-    .slide-arrow {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-    }
 }
