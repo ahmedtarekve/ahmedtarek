@@ -1166,3 +1166,9 @@ input[type="number"] {
     padding-top: 20px;
     min-height: 120px; /* عشان الموقع مايفضلش ينط لفوق وتحت مع التحميل */
 }
+/* ---- تظبيط ألوان القائمة المنسدلة عشان متظهرش بيضا ---- */
+.input-group select option {
+    background-color: #121212; /* لون خلفية غامق لايق مع الموقع */
+    color: #ffffff; /* لون النص أبيض */
+    padding: 10px;
+}
