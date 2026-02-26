@@ -1172,3 +1172,41 @@ input[type="number"] {
     color: #ffffff; /* لون النص أبيض */
     padding: 10px;
 }
+/* ========================================= */
+/* ---- إصلاح تجربة الموبايل (التلميح بالسحب) ---- */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. تصغير الكروت عشان الكارت اللي بعده يظهر منه جزء (Peeking) */
+    .filter-item, .thumb-card, .review-card {
+        flex: 0 0 78% !important; 
+        min-width: 240px !important;
+    }
+    
+    .filter-item.shorts-video {
+        flex: 0 0 58% !important; 
+        min-width: 170px !important;
+    }
+
+    /* 2. إضافة جملة (اسحب للمزيد) متحركة بدون أي تعديل في الـ HTML */
+    .slider-wrapper::after {
+        content: '👈 اسحب للمزيد';
+        position: absolute;
+        top: -15px;
+        left: 20px;
+        color: var(--primary-color);
+        font-size: 0.85rem;
+        font-weight: bold;
+        animation: swipeAnim 1.5s infinite;
+        z-index: 10;
+        background: rgba(0,0,0,0.5);
+        padding: 2px 10px;
+        border-radius: 10px;
+    }
+}
+
+/* حركة النبض للسحب */
+@keyframes swipeAnim {
+    0%, 100% { transform: translateX(0); opacity: 0.6; }
+    50% { transform: translateX(-8px); opacity: 1; }
+}
