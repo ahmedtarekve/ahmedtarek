@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>طلب خدمة | أحمد طارق</title>
-        <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -34,9 +34,21 @@
                         <input type="email" name="email" placeholder="example@mail.com" required>
                     </div>
                     <div class="input-group">
-                <label>رقم الواتساب (مهم للتواصل السريع)</label>
-                <input type="tel" name="whatsapp" placeholder="+2010..." dir="ltr" style="text-align: left;" required>
+                        <label>رقم الواتساب (مهم للتواصل السريع)</label>
+                        <input type="tel" name="whatsapp" placeholder="+2010..." dir="ltr" style="text-align: left;" required>
                     </div>
+                    
+                    <div class="input-group">
+                        <label>طريقة التواصل المفضلة</label>
+                        <select name="contact_preference" required>
+                            <option value="" disabled selected>اختر الطريقة</option>
+                            <option value="الواتساب">الواتساب</option>
+                            <option value="مكالمة هاتفية">مكالمة هاتفية</option>
+                            <option value="تليجرام">تليجرام</option>
+                            <option value="البريد الإلكتروني">البريد الإلكتروني</option>
+                        </select>
+                    </div>
+
                     <div class="input-group">
                         <label>الميزانية المتاحة ($)</label>
                         <input type="number" name="budget" placeholder="مثلاً 500$ (بالدولار)">
@@ -79,9 +91,11 @@
         <div class="form-wrapper glass glow-border" id="successContainer" style="display: none; text-align: center; padding: 60px 20px;">
             <i class="fas fa-check-circle" style="font-size: 5rem; color: #22c55e; margin-bottom: 25px;"></i>
             <h2 style="color: white; margin-bottom: 15px; font-size: 2.2rem;">تم إرسال طلبك بنجاح! 🎉</h2>
-            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto;">
-                استلمت تفاصيل مشروعك. راجع إيميلك دلوقتي هتلاقي رسالة مني، وهتواصل معاك في أقرب وقت عشان نبدأ شغل.
+            
+            <p id="dynamicSuccessOrder" style="color: var(--text-muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto;">
+                استلمت تفاصيل مشروعك. راجع إيميلك دلوقتي هتلاقي رسالة مني.
             </p>
+            
             <a href="index.html" class="btn-primary" style="margin-top: 35px; display: inline-flex; justify-content: center;">
                 <i class="fas fa-home"></i> العودة للرئيسية
             </a>
@@ -120,6 +134,10 @@
                 mode: 'no-cors' 
             })
             .then(() => {
+                // سحب طريقة التواصل وتغيير رسالة النجاح بناءً عليها
+                const contactMethod = formData.get('contact_preference') || "الواتساب";
+                document.getElementById('dynamicSuccessOrder').innerText = `استلمت تفاصيل مشروعك.. راجع إيميلك دلوقتي هتلاقي رسالة مني، وهتواصل معاك على ${contactMethod} في أقرب وقت عشان نبدأ شغل.`;
+
                 // إخفاء الفورم وإظهار رسالة النجاح
                 mainFormContainer.style.display = 'none';
                 successContainer.style.display = 'block';
@@ -130,8 +148,6 @@
                 btn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الطلب';
             });
         });
-
-        
     </script>
 </body>
 </html>
