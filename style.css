@@ -144,7 +144,7 @@ ul {
     width: 100%;
     height: 100%;
     /* غير اسم الصورة هنا لو مسميها اسم تاني */
-    background-image: url('hero-bg.png');
+    background-image: url('hero-bg.jpg');
     background-size: cover;
     background-position: center top; /* يركز على الجزء العلوي من الصورة */
     opacity: 0.15; /* هنا تتحكم في شفافية الصورة - قلل أو زود براحتك */
@@ -1209,4 +1209,88 @@ input[type="number"] {
 @keyframes swipeAnim {
     0%, 100% { transform: translateX(0); opacity: 0.6; }
     50% { transform: translateX(-8px); opacity: 1; }
+}
+
+/* ---- إشعارات المبيعات (Social Proof) ---- */
+.sales-popup {
+    position: fixed;
+    bottom: 20px;
+    left: 20px; /* على الشمال عشان Crisp على اليمين */
+    background: #121212; /* لون غامق شيك */
+    border: 1px solid #ef4444; /* إطار أحمر زي الصورة */
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); /* توهج أحمر */
+    border-radius: 12px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 9999;
+    transform: translateY(150%); /* مخفي تحت الشاشة */
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* حركة نط خفيفة */
+    direction: rtl;
+}
+
+.sales-popup.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.sales-popup-title {
+    color: #ef4444; /* لون النص زي الصورة */
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0 0 4px 0;
+}
+
+.sales-popup-desc {
+    color: #ddd;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.sales-popup-icon {
+    font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+    .sales-popup {
+        bottom: 80px; /* عشان مياكلش مساحة الموبايل من تحت */
+        left: 50%;
+        transform: translate(-50%, 150%);
+        width: 90%;
+        justify-content: center;
+    }
+    .sales-popup.show {
+        transform: translate(-50%, 0);
+    }
+}
+
+/* ---- تظبيط شكل الخصومات ---- */
+.old-price {
+    text-decoration: line-through;
+    color: #6b7280; /* رمادي مطفي */
+    font-size: 1.1rem;
+    margin-left: 8px;
+    font-weight: normal;
+}
+
+.discount-badge {
+    position: absolute;
+    top: -12px;
+    right: 15px;
+    background: #ef4444; /* لون أحمر ناري */
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
+    transform: rotate(-3deg); /* لفة بسيطة بتدي شكل ديناميكي */
+    z-index: 2;
+}
+
+/* عشان البادج يظبط لازم كارت الباقة نفسه يكون relative */
+.pricing-card {
+    position: relative;
 }
