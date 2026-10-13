@@ -435,9 +435,6 @@ ul {
     margin: 10px 0;
 }
 
-@media (max-width: 768px) {
-    .video-grid { grid-template-columns: 1fr; }
-}
 
 /* ---- Order Section ---- */
 .order-section {
@@ -754,69 +751,35 @@ input[type="number"] {
 }
 
 /* ========================================= */
-/* ---- النظام الموحد للسلايدر ومعرض الأعمال ---- */
+/* ---- Sliders for Thumbnails and Testimonials ---- */
 /* ========================================= */
-
 .slider-wrapper {
     position: relative;
-    display: flex;
-    align-items: center;
     width: 100%;
     margin-top: 20px;
-    padding: 0 40px; /* مساحة للأسهم */
+    padding: 0 40px;
 }
 
-.video-gallery, .slider-row {
+.slider-row {
     display: flex;
-    align-items: center; /* بيخلي الكروت متسنترة على خط واحد */
+    align-items: center;
     gap: 20px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding: 20px 0;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
-    width: 100%;
-}
-
-.video-gallery::-webkit-scrollbar, .slider-row::-webkit-scrollbar { 
-    display: none; 
-}
-
-/* ========================================= */
-/* ---- معرض الفيديوهات والأعمال (النظام الجديد) ---- */
-/* ========================================= */
-
-.slider-container, .slider-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
-    padding: 0 40px; /* مساحة للأسهم */
-}
-
-/* الكونتينر اللي شايل الكروت */
-.videos-track, .slider-row {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* المسافة بين الكروت */
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     padding: 20px 0;
     width: 100%;
-    scrollbar-width: none; /* إخفاء السكرول بار */
     -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-.videos-track::-webkit-scrollbar, .slider-row::-webkit-scrollbar {
+.slider-row::-webkit-scrollbar {
     display: none;
 }
 
-/* ---- الكروت الأساسية (فيديوهات، صور، تقييمات) ---- */
-.filter-item, .thumb-card, .review-card {
-    flex: 0 0 auto; /* مهم جداً عشان الكروت متتضغطش وتفضل محتفظة بمقاسها */
+.thumb-card,
+.review-card {
+    flex: 0 0 auto;
     scroll-snap-align: center;
     background: #111;
     border-radius: 16px;
@@ -826,20 +789,30 @@ input[type="number"] {
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.filter-item:hover, .thumb-card:hover {
+.thumb-card:hover,
+.review-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(245, 158, 11, 0.5); /* تأثير برتقالي خفيف */
+    border-color: rgba(245, 158, 11, 0.5);
 }
 
-/* 📐 المقاسات الهندسية (السر هنا) */
-.video-card.horizontal, .thumb-card {
-    width: 320px; /* عرض ثابت */
-    aspect-ratio: 16 / 9; /* نسبة العرض للطول (يوتيوب) */
+.thumb-card {
+    width: 300px;
+    aspect-ratio: 16 / 9;
 }
 
-.video-card.vertical, .filter-item.shorts-video {
-    width: 200px; /* عرض ثابت */
-    aspect-ratio: 9 / 16; /* نسبة العرض للطول (شورتس) */
+.thumb-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.thumb-card:hover img {
+    opacity: 0.85;
+    transform: scale(1.03);
 }
 
 .review-card {
@@ -851,230 +824,19 @@ input[type="number"] {
     gap: 15px;
 }
 
-/* ---- واجهة الفيديو والصور (Facade) ---- */
-.facade-bg, .thumb-card img {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-color: #1a1a2e; /* لون احتياطي */
-    object-fit: cover; /* مهم للصور المصغرة */
-    transition: opacity 0.3s, transform 0.3s;
-}
-
-.filter-item:hover .facade-bg, .thumb-card:hover img {
-    opacity: 0.7; /* تعتيم خفيف للتركيز على زرار التشغيل */
-    transform: scale(1.05); /* تكبير خفيف (Zoom in) */
-}
-
-/* زرار التشغيل */
-.play-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: rgba(245, 158, 11, 0.9);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
-    transition: 0.3s;
-    z-index: 2;
-    pointer-events: none; /* عشان ميمنعش كليك التشغيل لو ضغطت عليه */
-}
-
-.filter-item:hover .play-icon {
-    transform: translate(-50%, -50%) scale(1.15);
-    background: #f59e0b;
-}
-
-/* 📺 مشغل الفيديو (Iframe) لما يشتغل */
-.filter-item iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    z-index: 5;
-    background: #000;
-}
-
-/* ---- زراير الأسهم (التحكم في السلايدر) ---- */
-.slider-arrow, .slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #f59e0b;
-    color: #fff;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-}
-
-.slider-arrow:hover, .slider-btn:hover {
-    background: #d97706;
-    transform: translateY(-50%) scale(1.1);
-}
-
-.right-arrow, .right-btn { right: -10px; }
-.left-arrow, .left-btn { left: -10px; }
-
-/* ---- زراير الفلترة (Tabs) ---- */
-.filter-tabs {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.filter-btn {
-    padding: 8px 20px;
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: white;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.filter-btn:hover, .filter-btn.active {
-    background: var(--primary-color);
-    color: #fff;
-}
-
-/* لإخفاء الفيديوهات أثناء الفلترة */
-.filter-item.hide {
-    display: none !important;
-}
-
-/* ========================================= */
-/* 📱 تظبيط الموبايل (Responsive) 📱 */
-/* ========================================= */
-@media (max-width: 768px) {
-    .slider-container, .slider-wrapper { padding: 0 5px; }
-    .slider-arrow, .slider-btn { display: none; } /* إخفاء الأسهم للسحب باليد */
-    
-    /* عرض الكروت يتناسب مع الشاشة */
-    .video-card.horizontal, .thumb-card, .review-card {
-        width: 85vw;
-    }
-    
-    .video-card.vertical, .filter-item.shorts-video {
-        width: 65vw;
-    }
-}
-/* المقاسات الرياضية الصارمة (للكمبيوتر) */
-.filter-item { width: 340px; aspect-ratio: 16 / 9; height: auto; }
-.filter-item.shorts-video { width: 220px; aspect-ratio: 9 / 16; height: auto; }
-.thumb-card { width: 300px; aspect-ratio: 16 / 9; height: auto; }
-.review-card { width: 340px; height: auto; padding: 25px; display: flex; flex-direction: column; gap: 15px; }
-
-/* المشغلات والصور - الإصلاح النهائي لجوجل درايف ويوتيوب */
-.filter-item iframe, .thumb-card img {
-    position: absolute; /* ده هيخلي الفيديو يملأ المساحة صح */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-    object-fit: cover; /* دي مهمة للصور عشان متتمطش */
-}
-/* تظبيط واجهة الفيديو (الصورة المصغرة وزرار التشغيل) */
-.video-facade {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    z-index: 1; /* عشان تفوق الفيديو قبل ما يشتغل */
-}
-
-.video-facade img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-/* ---- زراير الأسهم ---- */
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    width: 45px; height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    display: flex; justify-content: center; align-items: center;
-    transition: 0.3s;
-}
-.slider-btn:hover { background: #d97706; transform: translateY(-50%) scale(1.1); }
-.right-btn { right: -10px; }
-.left-btn { left: -10px; }
-
-/* ---- زراير الفلترة وأنيميشن الإخفاء ---- */
-.filter-tabs {
-    display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 15px;
-}
-.filter-btn {
-    padding: 8px 20px; background: transparent; border: 1px solid var(--primary-color);
-    color: white; border-radius: 30px; font-weight: bold; cursor: pointer; transition: 0.3s;
-}
-.filter-btn:hover, .filter-btn.active { background: var(--primary-color); color: #fff; }
-
-.filter-item.hide { display: none; }
-
-/* كارت عرض الكل */
-.view-more-card {
-    width: 220px; aspect-ratio: 1 / 1; height: auto;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    cursor: pointer; color: #f59e0b; background: rgba(245,158,11,0.05); 
-    border: 2px dashed #f59e0b; border-radius: 12px; transition: 0.3s;
-    text-decoration: none;
-}
-.view-more-card:hover { transform: scale(1.05); background: rgba(245,158,11,0.15); }
-.view-more-card i { font-size: 2.5rem; margin-bottom: 10px; }
-.view-more-card h3 { color: #fff; margin: 0; font-size: 1.2rem; }
-
-/* تصميم داخلي لكارت التقييم (عشان مسحناه مع القديم) */
 .reviewer-info { display: flex; align-items: center; gap: 15px; }
 .reviewer-avatar { font-size: 3rem; color: #555; }
 .reviewer-details h4 { margin: 0 0 5px 0; font-size: 1.1rem; color: #fff; }
 .stars { color: #f59e0b; font-size: 0.9rem; letter-spacing: 2px; }
 .review-text { color: #ccc; font-size: 0.95rem; line-height: 1.6; font-style: italic; margin: 0; }
 
-/* 📱 تظبيط الموبايل (عشان متتضغطش وتفضل بنسبتها) 📱 */
 @media (max-width: 768px) {
     .slider-wrapper { padding: 0 5px; }
-    .slider-btn { display: none; } /* إخفاء الأسهم للسحب بالإيد */
-    
-    .filter-item { width: 85vw; }
-    .filter-item.shorts-video { width: 65vw; }
-    .thumb-card { width: 85vw; }
-    .review-card { width: 85vw; }
-    .view-more-card { width: 50vw; }
+    .thumb-card,
+    .review-card {
+        width: 85vw;
+    }
 }
-/* ========================================= */
 
 /* ---- ستايل قسم الباقات ---- */
 .pricing-grid {
@@ -1283,14 +1045,9 @@ input[type="number"] {
 
 @media (max-width: 768px) {
     /* 1. تصغير الكروت عشان الكارت اللي بعده يظهر منه جزء (Peeking) */
-    .filter-item, .thumb-card, .review-card {
+    .thumb-card, .review-card {
         flex: 0 0 78% !important; 
         min-width: 240px !important;
-    }
-    
-    .filter-item.shorts-video {
-        flex: 0 0 58% !important; 
-        min-width: 170px !important;
     }
 
     /* 2. إضافة جملة (اسحب للمزيد) متحركة بدون أي تعديل في الـ HTML */
@@ -1584,137 +1341,58 @@ input[type="number"] {
 }
 
 /* ========================================= */
-/* ---- معرض الفيديوهات (النسخة الجديدة 100%) ---- */
+/* ---- Wistia Video Gallery Styles ---- */
 /* ========================================= */
-.slider-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 0 40px;
+.wistia-video-wrapper {
     width: 100%;
-}
-
-.videos-track {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    padding: 20px 0;
-    width: 100%;
-    scrollbar-width: none; /* إخفاء السكرول بار في فايرفوكس */
-}
-
-.videos-track::-webkit-scrollbar {
-    display: none; /* إخفاء السكرول بار في كروم */
-}
-
-/* الكارت الأساسي اللي شايل الفيديو */
-.video-card {
-    flex: 0 0 auto;
-    scroll-snap-align: center;
-    background: #111; /* خلفية غامقة عشان لو مفيش صورة */
     border-radius: 16px;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    cursor: pointer;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    overflow: hidden; 
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    background: #000; 
 }
 
-.video-card:hover {
+.wistia-video-wrapper:hover {
     transform: translateY(-5px);
-    border-color: rgba(245, 158, 11, 0.5); /* إطار برتقالي خفيف في الهوفر */
+    border-color: rgba(245, 158, 11, 0.3); /* Brand Accent Color */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 158, 11, 0.1);
 }
 
-/* 📐 المقاسات الهندسية الصارمة (عشان مفيش حاجة تضرب) */
-.video-card.horizontal {
-    width: 320px;
-    aspect-ratio: 16 / 9; /* مقاس يوتيوب مسطرة */
-}
-
-.video-card.vertical {
-    width: 200px;
-    aspect-ratio: 9 / 16; /* مقاس الشورتس مسطرة */
-}
-
-/* واجهة الصورة (Facade) */
-.facade-bg {
+.wistia-video-wrapper wistia-player {
+    border-radius: 16px;
     width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-color: #1a1a2e; /* لون كحلي شيك لو اللينك مكسور */
-    transition: opacity 0.3s;
+    display: block;
 }
 
-.video-card:hover .facade-bg {
-    opacity: 0.6; /* تغميق الصورة عشان زرار التشغيل ينور */
+/* Mobile Responsiveness for Wistia */
+@media (max-width: 768px) {
+    #wistia-gallery-container {
+        padding: 0 15px;
+    }
 }
 
-/* زرار التشغيل البرتقالي */
-.play-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: rgba(245, 158, 11, 0.9);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
-    transition: 0.3s;
-    z-index: 2;
-}
-
-.video-card:hover .play-icon {
-    transform: translate(-50%, -50%) scale(1.15);
-    background: #f59e0b;
-}
-
-/* 📺 الايفريم بتاع الفيديو لما يشتغل (المشكلة القديمة اتحلت هنا) */
-.video-card iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    z-index: 5; /* بيطلع فوق الصورة والزرار */
-    background: #000;
-}
-
-/* زراير السهم يمين وشمال */
-.slider-arrow {
+/* ---- Slider Buttons (Arrows) ---- */
+.slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: #f59e0b;
-    color: #fff;
+    background: var(--primary-color);
+    color: white;
     border: none;
-    width: 45px; 
-    height: 45px;
+    width: 45px; height: 45px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 10;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    display: flex; align-items: center; justify-content: center;
+    display: flex; justify-content: center; align-items: center;
     transition: 0.3s;
 }
+.slider-btn:hover { background: #d97706; transform: translateY(-50%) scale(1.1); }
+.right-btn { right: -10px; }
+.left-btn { left: -10px; }
 
-.slider-arrow:hover { background: #d97706; transform: translateY(-50%) scale(1.1); }
-.right-arrow { right: -10px; }
-.left-arrow { left: -10px; }
-
-/* تظبيط مقاسات الموبايل */
+/* Hide arrows on mobile so users can swipe */
 @media (max-width: 768px) {
-    .slider-container { padding: 0 5px; }
-    .slider-arrow { display: none; } /* بنخفي الأسهم عشان العميل يسحب بصباعه */
-    .video-card.horizontal { width: 85vw; }
-    .video-card.vertical { width: 65vw; }
+    .slider-btn { display: none; }
 }
