@@ -125,60 +125,76 @@
             <div class="portfolio-category">
     <div class="section-header" style="text-align: center; margin-bottom: 30px;">
         <h3 class="category-title"><i class="fas fa-video"></i> معرض الفيديوهات</h3>
-        
-        <div class="filter-tabs">
-            <button class="filter-btn active" data-filter="all">الكل</button>
-            <button class="filter-btn" data-filter="youtube">يوتيوب</button>
-            <button class="filter-btn" data-filter="shorts">شورتس وريلز</button>
-            <button class="filter-btn" data-filter="education">تعليمي</button>
-            <button class="filter-btn" data-filter="podcast">بودكاست</button>
-            <button class="filter-btn" data-filter="ads">إعلانات</button>
-            <button class="filter-btn" data-filter="graduation">مشاريع تخرج</button>
-        </div>
     </div>
 
-<!-- ================= معرض الفيديوهات الجديد ================= -->
-    <div class="slider-container">
-        <!-- سهم اليمين -->
-        <button class="slider-arrow right-arrow" onclick="scrollGallery(1)"><i class="fas fa-chevron-right"></i></button>
+    <!-- Wistia Slider Wrapper -->
+    <div class="slider-wrapper">
+        <!-- Right Arrow -->
+        <button class="slider-btn right-btn" onclick="scrollContainer('wistiaRow', 1)"><i class="fas fa-chevron-right"></i></button>
 
-        <div class="videos-track" id="videosTrack">
+        <!-- The Horizontal Slider Row -->
+        <div class="slider-row" id="wistiaRow">
             
-            <!-- 🔴 مثال لفيديو شورتس (طولي) -->
-            <div class="video-card vertical filter-item" data-category="shorts" onclick="playVid(this, 'https://drive.google.com/file/d/1diz-gIW1DpychCZ5rDRfmszuDH55XnOn/preview')">
-                <!-- لو مفيش صورة، هيظهر خلفية سودة شيك أوتوماتيك -->
-                <div class="facade-bg" style="background-image: url('صورة-الفيديو.jpg');"></div>
-                <div class="play-icon"><i class="fas fa-play"></i></div>
+            <!-- Wistia Core Scripts (Loaded once) -->
+            <script src="https://fast.wistia.com/player.js" async></script>
+
+            <!-- Video 1 -->
+            <div class="wistia-card glass-hover">
+                <script src="https://fast.wistia.com/embed/fqxv163bbz.js" async type="module"></script>
+                <style>
+                    wistia-player[media-id='fqxv163bbz']:not(:defined) { 
+                        background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/fqxv163bbz/swatch'); 
+                        display: block; 
+                        filter: blur(5px); 
+                        padding-top:56.25%; 
+                    }
+                </style> 
+                <wistia-player media-id="fqxv163bbz" aspect="1.7777777777777777"></wistia-player>
             </div>
 
-            <!-- 🔴 مثال لفيديو يوتيوب عادي (بالعرض) -->
-            <div class="video-card horizontal filter-item" data-category="youtube" onclick="playVid(this, 'https://www.youtube.com/embed/RzQ4amveta8?autoplay=1')">
-                <!-- هنا بيسحب صورة يوتيوب أوتوماتيك -->
-                <div class="facade-bg" style="background-image: url('https://img.youtube.com/vi/RzQ4amveta8/maxresdefault.jpg');"></div>
-                <div class="play-icon"><i class="fas fa-play"></i></div>
+            <!-- Video 2 -->
+            <div class="wistia-card glass-hover">
+                <script src="https://fast.wistia.com/embed/hj3b7jyhnn.js" async type="module"></script>
+                <style>
+                    wistia-player[media-id='hj3b7jyhnn']:not(:defined) { 
+                        background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/hj3b7jyhnn/swatch'); 
+                        display: block; 
+                        filter: blur(5px); 
+                        padding-top:56.25%;
+                    }
+                </style> 
+                <wistia-player media-id="hj3b7jyhnn" aspect="1.7777777777777777"></wistia-player>
             </div>
-
-            <!-- تقدر تنسخ الكروت دي وتكررها لباقي الفيديوهات بنفس الطريقة -->
+            
+            <!-- Video 3 -->
+            <div class="wistia-card glass-hover">
+                <script src="https://fast.wistia.com/embed/406or55x14.js" async type="module"></script>
+                <style>
+                    wistia-player[media-id='406or55x14']:not(:defined) { 
+                        background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/406or55x14/swatch'); 
+                        display: block; 
+                        filter: blur(5px); 
+                        padding-top: 56.25%; 
+                    }
+                </style> 
+                <wistia-player media-id="406or55x14" aspect="1.7777777777777777"></wistia-player>
+            </div>
+            <!-- Add more <div class="wistia-card glass-hover"> here as needed -->
 
         </div>
         
-        <!-- سهم الشمال -->
-        <button class="slider-arrow left-arrow" onclick="scrollGallery(-1)"><i class="fas fa-chevron-left"></i></button>
+        <!-- Left Arrow -->
+        <button class="slider-btn left-btn" onclick="scrollContainer('wistiaRow', -1)"><i class="fas fa-chevron-left"></i></button>
     </div>
 
-    <!-- زرار عرض الكل الشيك (تحت الفيديوهات بدل الكارت المربع) -->
+    <!-- View All Button -->
     <div style="text-align: center; margin-top: 30px;">
         <a href="portfolio.html" class="btn-secondary" style="border-color: #f59e0b; color: #f59e0b;">
             <i class="fas fa-th-large"></i> عرض كل الأعمال
         </a>
     </div>
-    
-        </div>
-        <button class="slider-btn left-btn" onclick="scrollContainer('videoGallery', -1)"><i class="fas fa-chevron-left"></i></button>
-    </div>
-                
-    </div>
 </div>
+
     <h3 class="category-title"><i class="fas fa-image"></i> تصاميم الـ Thumbnails</h3>
     
     <div class="slider-wrapper">
