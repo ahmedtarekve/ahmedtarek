@@ -1,99 +1,112 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فصّل باقتك | أحمد طارق</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Build Your Custom Package | Ahmed Tarek</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="66a32cc1-2eb6-4bee-a43f-e87ac2d43686";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </head>
-<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
+<body class="order-page">
 
-    <div class="custom-builder-box glass" style="width: 100%; max-width: 600px; padding: 40px; border-radius: 20px;">
+    <a href="index.html#packages" class="back-home glass">
+        <i class="fas fa-arrow-left"></i> Back to Packages
+    </a>
+
+    <div class="custom-builder-box glass" style="width: 100%; max-width: 600px;">
         <div style="text-align: center; margin-bottom: 30px;">
-            <h2 style="color: #f59e0b;"><i class="fas fa-sliders-h"></i> فصّل باقتك على مزاجك</h2>
-            <p style="color: #aaa;">زود ونقص الخدمات براحتك، وهنحسبلك أفضل سعر فوراً</p>
+            <h2 style="color: #f59e0b; font-size: 1.9rem; font-weight: 800; margin-bottom: 8px;">
+                <i class="fas fa-sliders-h"></i> Build Your Custom Package
+            </h2>
+            <p style="color: #aaa; font-size: 0.95rem;">Select your exact deliverables below to get an instant quote tailored to your needs.</p>
         </div>
 
         <div class="services-list">
-            <div class="service-row" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #333;">
-                <div style="color: #fff;"><h4><i class="fas fa-video"></i> مونتاج فيديو طويل</h4><p style="color:#888; font-size: 0.85rem; margin:0;">حتى 10 دقائق</p></div>
-                <div class="counter-box" style="display: flex; background: #1a1a1a; border-radius: 8px; border: 1px solid #444;">
-                    <button onclick="updateCount('montage', -1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-minus"></i></button>
-                    <input type="number" id="count-montage" value="0" readonly style="width: 40px; text-align: center; background: transparent; border: none; color: #fff; font-weight: bold;">
-                    <button onclick="updateCount('montage', 1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-plus"></i></button>
+            <!-- Long-Form Video Editing -->
+            <div class="service-row">
+                <div style="color: #fff; text-align: left;">
+                    <h4 style="margin: 0 0 4px 0; font-size: 1.05rem;"><i class="fas fa-video" style="color: #f59e0b; margin-right: 8px;"></i> Long-Form Video Editing</h4>
+                    <p style="color: #888; font-size: 0.85rem; margin: 0;">Up to 10 minutes (High-Retention Pacing)</p>
+                </div>
+                <div class="counter-box">
+                    <button type="button" onclick="updateCount('montage', -1)" aria-label="Decrease Long-Form Videos"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="count-montage" value="0" readonly>
+                    <button type="button" onclick="updateCount('montage', 1)" aria-label="Increase Long-Form Videos"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
 
-            <div class="service-row" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #333;">
-                <div style="color: #fff;"><h4><i class="fas fa-mobile-alt"></i> شورتس / ريلز</h4></div>
-                <div class="counter-box" style="display: flex; background: #1a1a1a; border-radius: 8px; border: 1px solid #444;">
-                    <button onclick="updateCount('shorts', -1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-minus"></i></button>
-                    <input type="number" id="count-shorts" value="0" readonly style="width: 40px; text-align: center; background: transparent; border: none; color: #fff; font-weight: bold;">
-                    <button onclick="updateCount('shorts', 1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-plus"></i></button>
+            <!-- Shorts / Reels -->
+            <div class="service-row">
+                <div style="color: #fff; text-align: left;">
+                    <h4 style="margin: 0 0 4px 0; font-size: 1.05rem;"><i class="fas fa-mobile-alt" style="color: #f59e0b; margin-right: 8px;"></i> Viral Shorts / Reels</h4>
+                    <p style="color: #888; font-size: 0.85rem; margin: 0;">Vertical format (Up to 60 seconds)</p>
+                </div>
+                <div class="counter-box">
+                    <button type="button" onclick="updateCount('shorts', -1)" aria-label="Decrease Shorts"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="count-shorts" value="0" readonly>
+                    <button type="button" onclick="updateCount('shorts', 1)" aria-label="Increase Shorts"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
 
-            <div class="service-row" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #333;">
-                <div style="color: #fff;"><h4><i class="fas fa-image"></i> صور مصغرة</h4></div>
-                <div class="counter-box" style="display: flex; background: #1a1a1a; border-radius: 8px; border: 1px solid #444;">
-                    <button onclick="updateCount('thumb', -1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-minus"></i></button>
-                    <input type="number" id="count-thumb" value="0" readonly style="width: 40px; text-align: center; background: transparent; border: none; color: #fff; font-weight: bold;">
-                    <button onclick="updateCount('thumb', 1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-plus"></i></button>
+            <!-- High-CTR Thumbnails -->
+            <div class="service-row">
+                <div style="color: #fff; text-align: left;">
+                    <h4 style="margin: 0 0 4px 0; font-size: 1.05rem;"><i class="fas fa-image" style="color: #f59e0b; margin-right: 8px;"></i> High-CTR Thumbnails</h4>
+                    <p style="color: #888; font-size: 0.85rem; margin: 0;">Custom scroll-stopping design</p>
+                </div>
+                <div class="counter-box">
+                    <button type="button" onclick="updateCount('thumb', -1)" aria-label="Decrease Thumbnails"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="count-thumb" value="0" readonly>
+                    <button type="button" onclick="updateCount('thumb', 1)" aria-label="Increase Thumbnails"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
 
-            <div class="service-row" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
-                <div style="color: #fff;"><h4><i class="fas fa-pen-nib"></i> كتابة سكريبت</h4></div>
-                <div class="counter-box" style="display: flex; background: #1a1a1a; border-radius: 8px; border: 1px solid #444;">
-                    <button onclick="updateCount('script', -1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-minus"></i></button>
-                    <input type="number" id="count-script" value="0" readonly style="width: 40px; text-align: center; background: transparent; border: none; color: #fff; font-weight: bold;">
-                    <button onclick="updateCount('script', 1)" style="background: #2a2a2a; color: #f59e0b; border: none; padding: 10px 15px; cursor: pointer;"><i class="fas fa-plus"></i></button>
+            <!-- Viral Scriptwriting -->
+            <div class="service-row">
+                <div style="color: #fff; text-align: left;">
+                    <h4 style="margin: 0 0 4px 0; font-size: 1.05rem;"><i class="fas fa-pen-nib" style="color: #f59e0b; margin-right: 8px;"></i> Viral Scriptwriting</h4>
+                    <p style="color: #888; font-size: 0.85rem; margin: 0;">Power hooks & engaging storytelling</p>
+                </div>
+                <div class="counter-box">
+                    <button type="button" onclick="updateCount('script', -1)" aria-label="Decrease Scripts"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="count-script" value="0" readonly>
+                    <button type="button" onclick="updateCount('script', 1)" aria-label="Increase Scripts"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
         </div>
 
-        <div style="text-align: center; border-top: 1px dashed #f59e0b; margin-top: 20px; padding-top: 20px; min-height: 120px;">
-            <div id="calc-loader" style="display: none; color: #f59e0b; font-size: 1.2rem;">
-                <i class="fas fa-calculator fa-spin"></i> جاري الحساب...
+        <div class="calculation-area" style="text-align: center; border-top: 1px dashed rgba(245, 158, 11, 0.5); margin-top: 25px; padding-top: 25px; min-height: 130px;">
+            <div id="calc-loader" style="display: none; color: #f59e0b; font-size: 1.15rem; font-weight: 600; padding: 20px 0;">
+                <i class="fas fa-calculator fa-spin" style="margin-right: 8px;"></i> Calculating your custom quote...
             </div>
             
             <div id="calc-result" style="display: none;">
-                <h4 style="color: #aaa; margin-bottom: 5px;">التكلفة الإجمالية:</h4>
-                <h2 id="custom-total-price" style="color: #10b981; font-size: 2.5rem; margin: 0;">$0</h2>
+                <h4 style="color: #aaa; margin-bottom: 5px; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Estimated Total:</h4>
+                <h2 id="custom-total-price" style="color: #10b981; font-size: 2.5rem; font-weight: 800; margin: 0; transition: transform 0.2s ease;">$0 USD</h2>
                 
-                <button onclick="checkoutCustomPackage()" class="submit-btn" style="margin-top: 15px; width: 100%; font-size: 1.1rem;">
-                    تأكيد الباقة والطلب <i class="fas fa-arrow-left"></i>
+                <button type="button" onclick="checkoutCustomPackage()" class="btn-primary submit-btn" style="margin-top: 18px; width: 100%; font-size: 1.05rem;">
+                    Confirm & Proceed to Order <i class="fas fa-arrow-right"></i>
                 </button>
+            </div>
+
+            <div id="calc-empty" style="color: #777; font-size: 0.9rem; padding: 25px 0;">
+                Use the <strong>+</strong> buttons above to add services to your package.
             </div>
         </div>
         
-        <div style="text-align: center; margin-top: 15px;">
-            <a href="index.html" style="color: #aaa; text-decoration: none;"><i class="fas fa-home"></i> العودة للرئيسية</a>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="index.html" style="color: #aaa; font-size: 0.9rem; font-weight: 600; transition: 0.3s;" onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='#aaa'">
+                <i class="fas fa-home" style="margin-right: 5px;"></i> Back to Home
+            </a>
         </div>
     </div>
 
     <script>
         const customPrices = { montage: 50, shorts: 10, thumb: 10, script: 15 };
-        let localCurrency = "USD";
-        let conversionRate = 1;
         let typingTimer;
-
-        // جلب عُملة العميل أول ما الصفحة تفتح
-        window.addEventListener('load', async () => {
-            try {
-                const ipRes = await fetch('https://ipapi.co/json/');
-                const ipData = await ipRes.json();
-                localCurrency = ipData.currency;
-                
-                if (localCurrency !== 'USD') {
-                    const ratesRes = await fetch('https://open.er-api.com/v6/latest/USD');
-                    const ratesData = await ratesRes.json();
-                    conversionRate = ratesData.rates[localCurrency] || 1;
-                }
-            } catch (e) { console.log("Currency fetch failed."); }
-        });
 
         function updateCount(service, change) {
             const input = document.getElementById(`count-${service}`);
@@ -101,11 +114,12 @@
             if (currentVal < 0) currentVal = 0;
             input.value = currentVal;
 
+            document.getElementById('calc-empty').style.display = 'none';
             document.getElementById('calc-result').style.display = 'none';
             document.getElementById('calc-loader').style.display = 'block';
 
             clearTimeout(typingTimer);
-            typingTimer = setTimeout(calculateCustomPackage, 800);
+            typingTimer = setTimeout(calculateCustomPackage, 500);
         }
 
         function calculateCustomPackage() {
@@ -116,44 +130,45 @@
                 script: parseInt(document.getElementById('count-script').value)
             };
 
-            let totalUSD = (counts.montage * customPrices.montage) + (counts.shorts * customPrices.shorts) + (counts.thumb * customPrices.thumb) + (counts.script * customPrices.script);
+            const totalUSD = (counts.montage * customPrices.montage) + 
+                             (counts.shorts * customPrices.shorts) + 
+                             (counts.thumb * customPrices.thumb) + 
+                             (counts.script * customPrices.script);
 
             const loader = document.getElementById('calc-loader');
             const resultArea = document.getElementById('calc-result');
+            const emptyArea = document.getElementById('calc-empty');
+
+            loader.style.display = 'none';
 
             if (totalUSD > 0) {
-                loader.style.display = 'none';
+                emptyArea.style.display = 'none';
                 resultArea.style.display = 'block';
                 
-                // تحويل السعر لعملة العميل
-                let finalPriceText = totalUSD + " USD";
-                if (localCurrency !== "USD" && conversionRate !== 1) {
-                    let localTotal = Math.round(totalUSD * conversionRate);
-                    finalPriceText = localTotal.toLocaleString() + " " + localCurrency;
-                }
+                const finalPriceText = `$${totalUSD.toLocaleString()} USD`;
 
                 const priceDisplay = document.getElementById('custom-total-price');
                 priceDisplay.innerText = finalPriceText;
                 priceDisplay.style.transform = "scale(1.1)";
                 setTimeout(() => priceDisplay.style.transform = "scale(1)", 200);
 
-                let detailsString = "باقة مخصصة: ";
-                if(counts.montage > 0) detailsString += `${counts.montage}x مونتاج، `;
-                if(counts.shorts > 0) detailsString += `${counts.shorts}x شورتس، `;
-                if(counts.thumb > 0) detailsString += `${counts.thumb}x صور مصغرة، `;
-                if(counts.script > 0) detailsString += `${counts.script}x سكريبت`;
-                detailsString = detailsString.replace(/، $/, "");
+                let items = [];
+                if (counts.montage > 0) items.push(`${counts.montage}x Long-Form Video`);
+                if (counts.shorts > 0) items.push(`${counts.shorts}x Viral Shorts`);
+                if (counts.thumb > 0) items.push(`${counts.thumb}x Thumbnail`);
+                if (counts.script > 0) items.push(`${counts.script}x Script`);
+
+                const detailsString = "Custom Package: " + items.join(", ");
 
                 localStorage.setItem('selectedPackage', detailsString);
                 localStorage.setItem('packagePrice', finalPriceText);
             } else {
-                loader.style.display = 'none';
                 resultArea.style.display = 'none';
+                emptyArea.style.display = 'block';
             }
         }
 
         function checkoutCustomPackage() {
-            // هنبعته على طول لصفحة package.html اللي بتستقبل الطلبات السريعة
             window.location.href = 'package.html';
         }
     </script>
