@@ -1,46 +1,65 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معرض الأعمال الشامل | أحمد طارق</title>
+    <title>Full Portfolio | Ahmed Tarek</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="projects.js"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="66a32cc1-2eb6-4bee-a43f-e87ac2d43686";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+    <script src="projects.js"></script>
 </head>
-<body style="padding: 40px 20px;">
+<body style="padding: 50px 20px 80px;">
 
     <div style="max-width: 1200px; margin: 0 auto;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 45px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 25px;">
             <div>
-                <h2 style="color: #f59e0b; margin: 0;"><i class="fas fa-folder-open"></i> معرض الأعمال كامل</h2>
-                <p id="category-title" style="color: #aaa; margin: 5px 0 0;">...</p>
+                <h2 style="color: #f59e0b; font-size: 2rem; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 12px;">
+                    <i class="fas fa-folder-open"></i> Full Video Portfolio
+                </h2>
+                <p id="category-title" style="color: #9ca3af; margin: 6px 0 0; font-size: 0.95rem; font-weight: 500;">Category: All Projects</p>
             </div>
-            <a href="index.html#portfolio" style="background: #333; color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none;"><i class="fas fa-arrow-right"></i> عودة للرئيسية</a>
+            
+            <a href="index.html#portfolio" class="btn-secondary" style="border-color: #f59e0b; color: #f59e0b;">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
         </div>
 
         <div class="portfolio-grid" id="full-grid">
-            </div>
+        </div>
+
+        <!-- Bottom CTA for high conversion -->
+        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.06);">
+            <h3 style="color: #fff; font-size: 1.5rem; font-weight: 700; margin-bottom: 15px;">Like what you see? Let's scale your channel next.</h3>
+            <a href="order.html" class="btn-primary">
+                <i class="fas fa-magic"></i> Start Your Project
+            </a>
+        </div>
     </div>
 
     <script>
         window.onload = function() {
             const category = localStorage.getItem('portfolioCategory') || 'all';
             
-            // ترجمة اسم القسم عشان نكتبه فوق
             const catNames = {
-                'all': 'جميع الأعمال', 'youtube': 'فيديوهات يوتيوب', 'shorts': 'شورتس وريلز',
-                'education': 'كورسات تعليمية', 'ads': 'إعلانات وبروموهات', 'podcast': 'بودكاست', 'graduation': 'مشاريع تخرج'
+                'all': 'All Projects',
+                'youtube': 'Long-Form YouTube Videos',
+                'shorts': 'Viral Shorts & Reels',
+                'education': 'Educational Content',
+                'ads': 'Commercials & Promos',
+                'podcast': 'Podcasts',
+                'graduation': 'Special Projects'
             };
-            document.getElementById('category-title').innerText = "قسم: " + catNames[category];
 
-            // فلترة ورص الفيديوهات كلها
+            const categoryLabel = catNames[category] || 'All Projects';
+            document.getElementById('category-title').innerText = "Showing: " + categoryLabel;
+
             const grid = document.getElementById('full-grid');
-            const filtered = allProjects.filter(p => category === 'all' || p.categories.includes(category));
+            const filtered = allProjects.filter(p => category === 'all' || (p.categories && p.categories.includes(category)));
             
-            filtered.forEach(project => {
-                grid.innerHTML += `<div class="portfolio-item ${project.type}">${project.content}</div>`;
-            });
+            grid.innerHTML = filtered.map(project => `<div class="portfolio-item ${project.type}">${project.content}</div>`).join('');
         };
     </script>
 </body>
