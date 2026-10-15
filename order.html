@@ -1,110 +1,111 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طلب خدمة | أحمد طارق</title>
+    <title>Start a Project | Ahmed Tarek</title>
     <link rel="icon" type="image/png" href="favicon.png">
-
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="66a32cc1-2eb6-4bee-a43f-e87ac2d43686";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </head>
 <body class="order-page">
 
     <a href="index.html" class="back-home glass">
-        <i class="fas fa-chevron-right"></i> العودة للرئيسية
+        <i class="fas fa-arrow-left"></i> Back to Home
     </a>
 
     <section class="order-container">
         
         <div class="form-wrapper glass glow-border" id="mainFormContainer">
-            <h2 class="gradient-text" style="text-align: center;">بدء مشروع جديد</h2>
-            <p style="text-align: center; margin-bottom: 30px; color: var(--text-muted);">املأ البيانات دي وهرد عليك بخطة عمل تناسب قناتك وأهدافك.</p>
+            <h2 class="gradient-text" style="text-align: center;">Start a New Project</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: var(--text-muted);">Fill out the brief below and I'll get back to you with a tailored production plan for your channel or brand.</p>
 
             <form id="projectForm">
                 <div class="form-grid">
                     <div class="input-group">
-                        <label>الاسم / اسم القناة</label>
-                        <input type="text" name="name" placeholder="الاسم" required>
-                    </div>
-                    <div class="input-group">
-                        <label>البريد الإلكتروني</label>
-                        <input type="email" name="email" placeholder="example@mail.com" required>
-                    </div>
-                    <div class="input-group">
-                        <label>رقم الواتساب (مهم للتواصل السريع)</label>
-                        <input type="tel" name="whatsapp" placeholder="+2010..." dir="ltr" style="text-align: left;" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label>طريقة التواصل المفضلة</label>
-                        <select name="contact_preference" required>
-                            <option value="" disabled selected>اختر الطريقة</option>
-                            <option value="الواتساب">الواتساب</option>
-                            <option value="مكالمة هاتفية">مكالمة هاتفية</option>
-                            <option value="تليجرام">تليجرام</option>
-                            <option value="البريد الإلكتروني">البريد الإلكتروني</option>
-                        </select>
+                        <label>Your Name / Channel Name</label>
+                        <input type="text" name="name" placeholder="e.g. Alex / Channel Name" required>
                     </div>
 
                     <div class="input-group">
-                        <label>الميزانية المتاحة ($)</label>
-                        <input type="number" name="budget" placeholder="مثلاً 500$ (بالدولار)">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>WhatsApp / Phone Number (With Country Code)</label>
+                        <input type="tel" name="whatsapp" placeholder="+1 (555) 000-0000" dir="ltr" style="text-align: left;" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Preferred Contact Method</label>
+                        <select name="contact_preference" required>
+                            <option value="" disabled selected>Select Preferred Method</option>
+                            <option value="WhatsApp">WhatsApp</option>
+                            <option value="Email">Email</option>
+                            <option value="Telegram / Discord">Telegram / Discord</option>
+                            <option value="Phone / Zoom Call">Phone / Zoom Call</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label>Estimated Budget ($ USD)</label>
+                        <input type="number" name="budget" placeholder="e.g. 500 (in USD)">
                     </div>
                 </div>
 
                 <div class="input-group full-width" style="margin-bottom: 20px; margin-top: 10px;">
-                    <label>نوع الخدمة المطلوبة (تقدر تختار أكتر من حاجة)</label>
+                    <label>Services Needed (Select all that apply)</label>
                     <div class="checkbox-group">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="service" value="مونتاج فيديو">
-                            <span>مونتاج فيديو</span>
+                            <input type="checkbox" name="service" value="Retention Video Editing">
+                            <span>Retention Video Editing</span>
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="service" value="كتابة سكريبت">
-                            <span>كتابة سكريبت</span>
+                            <input type="checkbox" name="service" value="Viral Scriptwriting">
+                            <span>Viral Scriptwriting</span>
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="service" value="تصميم صور مصغرة">
-                            <span>تصميم صور مصغرة</span>
+                            <input type="checkbox" name="service" value="High-CTR Thumbnail Design">
+                            <span>High-CTR Thumbnail Design</span>
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="service" value="باقة كاملة">
-                            <span>باقة كاملة (Video + Script + Thumbnail)</span>
+                            <input type="checkbox" name="service" value="Full Production Package (Video + Script + Thumbnail)">
+                            <span>Full-Stack Package (Video + Script + Thumbnail)</span>
                         </label>
                     </div>
                 </div>
 
                 <div class="input-group full-width">
-                    <label>وصف المشروع</label>
-                    <textarea name="description" rows="4" placeholder="ايه هدف الفيديو؟ وايه الـ Style اللي بتحبه؟" required></textarea>
+                    <label>Project Details & Vision</label>
+                    <textarea name="description" rows="4" placeholder="What is the goal of your videos? Share your channel link, target pacing/style, or any reference videos..." required></textarea>
                 </div>
 
                 <button type="submit" class="btn-primary submit-btn" id="submitBtn" style="margin-top: 20px;">
-                    <i class="fas fa-paper-plane"></i> إرسال الطلب
+                    <i class="fas fa-paper-plane"></i> Submit Project Inquiry
                 </button>
             </form>
         </div>
 
         <div class="form-wrapper glass glow-border" id="successContainer" style="display: none; text-align: center; padding: 60px 20px;">
             <i class="fas fa-check-circle" style="font-size: 5rem; color: #22c55e; margin-bottom: 25px;"></i>
-            <h2 style="color: white; margin-bottom: 15px; font-size: 2.2rem;">تم إرسال طلبك بنجاح! 🎉</h2>
+            <h2 style="color: white; margin-bottom: 15px; font-size: 2.2rem;">Project Inquiry Received! 🎉</h2>
             
-            <p id="dynamicSuccessOrder" style="color: var(--text-muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto;">
-                استلمت تفاصيل مشروعك. راجع إيميلك دلوقتي هتلاقي رسالة مني.
+            <p id="dynamicSuccessOrder" style="color: var(--text-muted); font-size: 1.1rem; max-width: 520px; margin: 0 auto; line-height: 1.7;">
+                I've received your project details. Please check your inbox for a confirmation email.
             </p>
             
             <a href="index.html" class="btn-primary" style="margin-top: 35px; display: inline-flex; justify-content: center;">
-                <i class="fas fa-home"></i> العودة للرئيسية
+                <i class="fas fa-home"></i> Back to Home
             </a>
         </div>
 
     </section>
 
     <script>
-        // رابط الاسكريبت بتاعك
+        // Google Apps Script Webhook URL
         const scriptURL = 'https://script.google.com/macros/s/AKfycbx2_F4jVwOzwl-ggziwSie9sD-u-7YQHk-IyTboadbu-g9JZ4jpEYY29N5DeKFfFeTU/exec';
         
         const form = document.getElementById('projectForm');
@@ -115,37 +116,38 @@
         form.addEventListener('submit', e => {
             e.preventDefault();
             
-            // تغيير شكل الزرار وقت التحميل
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+            // Update button state during submission
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Inquiry...';
             btn.disabled = true;
 
             const formData = new FormData(form);
             
-            // تجميع الخدمات المختارة في نص واحد
+            // Combine selected services into a single string
             const services = formData.getAll('service');
-            const selectedServices = services.length > 0 ? services.join(' + ') : 'لم يتم التحديد';
+            const selectedServices = services.length > 0 ? services.join(' + ') : 'Not Specified';
             formData.delete('service');
             formData.append('service', selectedServices);
 
-            // إرسال البيانات لجوجل
+            // Send data to Google Sheets
             fetch(scriptURL, { 
                 method: 'POST', 
                 body: new URLSearchParams(formData),
                 mode: 'no-cors' 
             })
             .then(() => {
-                // سحب طريقة التواصل وتغيير رسالة النجاح بناءً عليها
-                const contactMethod = formData.get('contact_preference') || "الواتساب";
-                document.getElementById('dynamicSuccessOrder').innerText = `استلمت تفاصيل مشروعك.. راجع إيميلك دلوقتي هتلاقي رسالة مني، وهتواصل معاك على ${contactMethod} في أقرب وقت عشان نبدأ شغل.`;
+                // Customize success message based on preferred contact method
+                const contactMethod = formData.get('contact_preference') || "WhatsApp";
+                document.getElementById('dynamicSuccessOrder').innerText = `I've received your project brief! Check your email inbox right now for a confirmation message, and I'll reach out to you via ${contactMethod} shortly to kick things off.`;
 
-                // إخفاء الفورم وإظهار رسالة النجاح
+                // Hide form and display success screen
                 mainFormContainer.style.display = 'none';
                 successContainer.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             })
             .catch(error => {
-                alert('حصلت مشكلة في الاتصال، حاول مرة تانية!');
+                alert('Connection error! Please check your internet connection and try again.');
                 btn.disabled = false;
-                btn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الطلب';
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Project Inquiry';
             });
         });
     </script>
