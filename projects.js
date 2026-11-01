@@ -280,5 +280,38 @@ const allProjects = [
             </style>
             <wistia-player media-id="gmv249blvf" aspect="1.7777777777777777"></wistia-player>
         `
-    }
+    },
+  // Video 14
+{
+    categories: ['all', 'youtube'],
+    type: 'horizontal',
+    content: `
+        <style>
+            wistia-player[media-id='liotij8p16']:not(:defined) { 
+                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/liotij8p16/swatch'); 
+                display: block; 
+                filter: blur(5px); 
+                padding-top: 56.25%; 
+            }
+        </style>
+        <wistia-player media-id="liotij8p16" aspect="2.341463414634146"></wistia-player>
+    `
+},
+
+// Video 15
+{
+    categories: ['all', 'youtube'],
+    type: 'horizontal',
+    content: `
+        <style>
+            wistia-player[media-id='qhwc9gl51m']:not(:defined) { 
+                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/qhwc9gl51m/swatch'); 
+                display: block; 
+                filter: blur(5px); 
+                padding-top: 56.25%; 
+            }
+        </style>
+        <wistia-player media-id="qhwc9gl51m" aspect="1.7777777777777777"></wistia-player>
+    `
+},
 ];
