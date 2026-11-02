@@ -314,4 +314,71 @@ const allProjects = [
         <wistia-player media-id="qhwc9gl51m" aspect="1.7777777777777777"></wistia-player>
     `
 },
+    // Video 16
+{
+    categories: ['all', 'youtube'],
+    type: 'horizontal',
+    content: `
+        <style>
+            wistia-player[media-id='hd9m9z4vym']:not(:defined) {
+                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/hd9m9z4vym/swatch');
+                display: block;
+                filter: blur(5px);
+                padding-top: 56.25%;
+            }
+        </style>
+        <wistia-player media-id="hd9m9z4vym" aspect="1.7777777777777777"></wistia-player>
+    `
+},
+
+// Video 17
+{
+    categories: ['all', 'youtube'],
+    type: 'horizontal',
+    content: `
+        <style>
+            wistia-player[media-id='cstgmadioi']:not(:defined) {
+                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/cstgmadioi/swatch');
+                display: block;
+                filter: blur(5px);
+                padding-top: 56.25%;
+            }
+        </style>
+        <wistia-player media-id="cstgmadioi" aspect="1.7777777777777777"></wistia-player>
+    `
+},
+
+// Video 18
+{
+    categories: ['all', 'youtube'],
+    type: 'horizontal',
+    content: `
+        <style>
+            wistia-player[media-id='dbbn6z6jjk']:not(:defined) {
+                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/dbbn6z6jjk/swatch');
+                display: block;
+                filter: blur(5px);
+                padding-top: 56.25%;
+            }
+        </style>
+        <wistia-player media-id="dbbn6z6jjk" aspect="1.7777777777777777"></wistia-player>
+    `
+},
+
+// Video 19
+{
+    categories: ['all', 'youtube'],
+    type: 'horizontal',
+    content: `
+        <style>
+            wistia-player[media-id='vi31qw5ax5']:not(:defined) {
+                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/vi31qw5ax5/swatch');
+                display: block;
+                filter: blur(5px);
+                padding-top: 56.25%;
+            }
+        </style>
+        <wistia-player media-id="vi31qw5ax5" aspect="1.7777777777777777"></wistia-player>
+    `
+},
 ];
